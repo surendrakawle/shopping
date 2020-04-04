@@ -57,7 +57,16 @@ class UserController extends Controller
     {
        // dd($user->roles);
        //dd($request->role);
-        $user->roles()->sync($request->role);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        if($user->save())
+        {
+            $request->session()->flash('success',$user->name .' has been updated.');
+        }
+        else{
+            $request->session()->flash('error','There was an error updating the user.');
+        }
+            $user->roles()->sync($request->role);
         return redirect()->route('admin.users.index');
     }
 
