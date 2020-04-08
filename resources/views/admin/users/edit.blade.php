@@ -7,12 +7,7 @@
                                 <div class="col-xs-12 col-sm-6">
                                     <h2>Edit user {{$user->name}}</h2>
                                 </div>
-                                <div class="col-xs-12 col-sm-6 align-right">
-                                    <div class="switch panel-switch-btn">
-                                        <span class="m-r-10 font-12">REAL TIME</span>
-                                        <label>OFF<input type="checkbox" id="realtime" checked><span class="lever switch-col-cyan"></span>ON</label>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
