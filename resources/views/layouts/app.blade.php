@@ -296,14 +296,6 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            @can('manage-users')
-                                     <a class="dropdown-item" href="{{ route('home') }}" >
-                                    Home
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('admin.users.index') }}" >
-                                    User Management
-                                    </a>
-                            @endcan
                             <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
@@ -331,11 +323,22 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">ADMIN PANEL</li>
+                    
                     <li class="active">
-                        <a href="index.html">
-                            <i class="material-icons">home</i>
-                            <span>Home</span>
-                        </a>
+                         @can('manage-users')
+                                    <a href="{{ route('home') }}">
+                                         <i class="material-icons">home</i>
+                                         <span>Home</span>
+                                    </a>
+                            @endcan
+                    </li>
+                    <li>
+                         @can('manage-users')
+                                    <a href="{{ route('admin.users.index') }}">
+                                         <i class="material-icons">perm_identity</i>
+                                         <span>Users</span>
+                                    </a>
+                            @endcan
                     </li>
                 </ul>
             </div>
