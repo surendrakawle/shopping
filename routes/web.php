@@ -26,5 +26,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
     Route::resource('/users','UserController',['except'=>['show','create','store']]);
     
 });
+Auth::routes();
 // Route::match(['get','post'],'/','indexController@index');
 
