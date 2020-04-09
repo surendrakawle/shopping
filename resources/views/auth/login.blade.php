@@ -26,13 +26,10 @@
                 
                                 <form method="POST" class="form-horizontal" action="{{ route('login') }}">
                                     @csrf
-                                <div class="row clearfix">
-
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                          <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-                                    </div>
-                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                           <div class="form-group">
+                                <div class="form-group row">
+                                     <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                        <div class="col-md-6">
+                                           <div class="form-line">
                                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                                 @error('email')
@@ -44,14 +41,11 @@
                                        </div>
                            
                                 </div>
-                                <div class="row clearfix">
+                                <div class="form-group row ">
 
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                          <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-                                    </div>
-                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                           <div class="form-group">
-                                               <div class="form-line">
+                                     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                     <div class="col-md-6">
+                                           <div class="form-line">
                                                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                                     @error('password')
@@ -60,34 +54,29 @@
                                                         </span>
                                                     @enderror
                             
-                                                </div>
-                                           </div>
+                                            </div>
                                        </div>
                            
                                 </div>
                                 <div class="row clearfix">
 
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                          
-                                    </div>
-                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <label  class="col-md-4 col-form-label text-md-right"></label>
+                                     
+                                     <div class=" col-md-6 ">
                                            <div class="form-group">
-                                               <div >
-                                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                               <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                                </div>
+                                                    <label class="form-check-label" for="remember">
+                                                        {{ __('Remember Me') }}
+                                                    </label>
                                            </div>
                                        </div>
                                 </div>
-                                <div class="row clearfix">
+                                <div class="form-group row mb-0">
 
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                          
-                                    </div>
-                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                     <label  class="col-md-4 col-form-label text-md-right"></label>
+                                    
+                                     <div class=" col-md-6 offset-md-4">
                                            <div class="form-group">
                                                 <button type="submit" class="btn btn-primary">
                                                      {{ __('Login') }}
