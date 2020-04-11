@@ -313,7 +313,7 @@
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                             <li role="separator" class="divider"></li>
-                            @can('manage-users')
+                            @can('all-users')
                             <li>
                                 <a href="{{ route('logout') }}"  onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -336,21 +336,27 @@
                     <li class="header">ADMIN PANEL</li>
                     
                     <li class="active">
-                         @can('manage-users')
                                     <a href="{{ route('home') }}">
                                          <i class="material-icons">home</i>
                                          <span>Home</span>
                                     </a>
-                            @endcan
                     </li>
+                         @can('admin-users')
                     <li>
-                         @can('manage-users')
                                     <a href="{{ route('admin.users.index') }}">
                                          <i class="material-icons">perm_identity</i>
                                          <span>Users</span>
                                     </a>
-                            @endcan
                     </li>
+                    @endcan
+                    @can('manage-users')
+                    <li>
+                                    <a href="{{ route('products.add-product') }}">
+                                         <i class="material-icons">perm_identity</i>
+                                         <span>Product</span>
+                                    </a>
+                    </li>
+                     @endcan
                 </ul>
             </div>
             <!-- #Menu -->
@@ -558,6 +564,8 @@
 
     <!-- Demo Js -->
     <script src="{{asset('frontEnd/js/demo.js')}}"></script>
+
+    <script src="{{asset('frontEnd/js/product.js')}}"></script>
 </body>
 
 </html>

@@ -24,8 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
     
     Route::resource('/users','UserController',['except'=>['show','create','store']]);
-    
 });
+Route::match(['get','post'],'/products/add-product','ProductController@addProduct')->name('products.add-product')->middleware('can:manage-users');
+Route::match(['get','post'],'/formDefination','FormDefinationController@index')->name('formDefination')->middleware('can:manage-users');
 Auth::routes();
 // Route::match(['get','post'],'/','indexController@index');
 
