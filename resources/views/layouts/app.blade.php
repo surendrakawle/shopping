@@ -523,6 +523,78 @@
         </div>
     </section>
 
+
+    <section class="content">
+        <div class="container-fluid">
+            <!-- No Header Card -->
+            <div class="row">
+               
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="body bg-blue-grey">
+                            <div class="row">
+               
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <div class="card">
+                                        <div class="body bg-blue-grey">
+                                           <ul class="footer_ul">
+                                                <li>Contact Us</li>
+                                                <li>About Us</li>
+                                                <li>Help Center</li>
+                                                <li>FAQ</li>
+                                           </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <div class="card">
+                                        <div class="body bg-blue-grey">
+                                            <ul class="footer_ul">
+                                                <li>Return Policy</li>
+                                                <li>Terms of Use </li>
+                                                <li>Security</li>
+                                                <li>Privacy</li>
+                                           </ul>    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <div class="card">
+                                        <div class="body bg-blue-grey">
+                                           <ul class="footer_ul">
+                                                <li>Facebook</li>
+                                                <li>Twitter </li>
+                                                <li>Youtube</li>
+                                                <li>Telegram</li>
+                                           </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <div class="card">
+                                        <div class="body bg-blue-grey">
+                                        <ul class="footer_ul">
+                                                <li> Shop No. 09  C-21 MALL, </li>
+                                                <li>BHAYANDAR WEST ,</li>
+                                                <li>MUMBAI 401601 ,</li>
+                                                <li>MAHARATRA , INDIA .</li>
+                                           </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- #END# No Header Card -->
+        </div>
+    </section>
+
+
     <!-- Jquery Core Js -->
     <script src="{{asset('frontEnd/plugins/jquery/jquery.min.js')}}"></script>
 
