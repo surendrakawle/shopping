@@ -74,7 +74,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="{{route('home')}}">{{ config('app.name', 'Shoping Add') }}</a>
+                <a class="navbar-brand" href="{{route('/')}}">{{ config('app.name', 'Shoping Add') }}</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -302,7 +302,7 @@
                             <li role="separator" class="divider"></li>
                              @if (Route::has('login'))
                                  @auth
-                                     <li><a href="{{ url('/home') }}"><i class="material-icons">home</i>Home</a></li>
+                                     <li><a href="{{ url('/') }}"><i class="material-icons">home</i>Home</a></li>
                                     @else
                                         <li><a href="{{ route('login') }}"><i class="material-icons">input</i>Login</a></li>
                                          @if (Route::has('register'))
@@ -336,7 +336,7 @@
                     <li class="header">ADMIN PANEL</li>
                     
                     <li class="active">
-                                    <a href="{{ route('home') }}">
+                                    <a href="{{ route('/') }}">
                                          <i class="material-icons">home</i>
                                          <span>Home</span>
                                     </a>

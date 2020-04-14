@@ -6,7 +6,7 @@ table thead
         font-variant: small-caps;
         box-shadow: 10px 10px 5px grey;
         padding:15px!important;
-        color:#fff;
+        color:#fff; 
 }
 table tbody tr:hover
 {

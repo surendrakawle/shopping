@@ -13,8 +13,9 @@
                                Add Product
                             </ul>
                         </div>
-                        <div class="body addForm">
-
+                        <div class="body  table-responsive">
+                             <form  id="upload_image_form" action="javascript:void(0)" class="form-horizontal addForm"  enctype="multipart/form-data" method="POST">
+                            </form>    
                         </div>
                     </div>
                 </div>

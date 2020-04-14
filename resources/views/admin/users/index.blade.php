@@ -32,7 +32,7 @@
                 
                    <table class="table table-sm">
                    <thead class="">
-                   <tr class="btn-danger">
+                   <tr class="bg-primary">
                         <th scope="col" width="18%">Name</th>
                         <th scope="col" width="22%">Email</th>
                         <th scope="col" width="20%">Roles</th>

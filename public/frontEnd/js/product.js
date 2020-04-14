@@ -1,7 +1,31 @@
 
- $(document).ready(function (e) {
+$(document).ready(function (e) {
+                        
+                        let table_content="<table class='table'> "+
+                                          "<thead class='bg-primary'>"+
+                                          "<tr>"+
+                                          "<th>#</th>"+
+                                          "<th>FIRST NAME</th>"+
+                                          "<th>LAST NAME</th>"+
+                                          "<th>USERNAME</th>"+
+                                          "</tr>"+
+                                          "</thead>"+
+                                          "<tbody>"+
+                                          "<tr>"+
+                                          "<th scope='row'>1</th>"+
+                                          "<td>Mark</td>"+
+                                          "<td>Otto</td>"+
+                                          "<td>@mdo</td>"+
+                                          "</tr>"+
+                                          "</tbody>"+
+                                          "</table>";
+
+
+
+
+
 $('#addFormAction').click(function() {
-       
+      
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -21,6 +45,7 @@ $('#addFormAction').click(function() {
                         if(data[0].name="PRODUCT"){
                          data= JSON.parse(data[0].form_json);
                          let data_1=Object.keys(data);
+                         let data_2=Object.values(data);
                          let content="";
                                     let label;
                                     let button_S;
@@ -65,7 +90,13 @@ $('#addFormAction').click(function() {
                                                             content +="<div class='col-lg-"+col_2+" col-md-"+col_2+" col-sm-"+col_2+" col-xs-"+col_2+"'>";
                                                             content +="<div class='form-group'>";
                                                             content +="<div class='form-line'>";
-                                                            content +="<input id='"+label_str+"' type='text' placeholder='ENTER "+label[k]+" ' class='form-control @error('email') is-invalid @enderror' name='"+label_str+"' value='' required  autofocus>";
+                                                           // console.log(data_2[k]);
+                                                            if(data_2[k]=="number" || data_2[k]=="text" )
+                                                            content +="<input id='"+label_str+"' type='"+data_2[k]+"' placeholder='ENTER "+label[k]+" ' class='form-control @error('email') is-invalid @enderror' name='"+label_str+"' value='' required  autofocus>";
+                                                            if(data_2[k]=="file" )
+                                                            content +="<input id='"+label_str+"' type='"+data_2[k]+"' placeholder='ENTER "+label[k]+" ' class='form-control @error('email') is-invalid @enderror' name='"+label_str+"[]' value='' required  autofocus multiple>";
+                                                            if(data_2[k]=="textarea" )
+                                                            content +="<textarea id='"+label_str+"' type='"+data_2[k]+"' placeholder='ENTER "+label[k]+" ' class='form-control @error('email') is-invalid @enderror' name='"+label_str+"' value='' required  autofocus ></textarea>";
                                                             content +="</div>";
                                                             content +="</div>";
 
@@ -87,13 +118,13 @@ $('#addFormAction').click(function() {
                                                            content +="<div class='form-group'>";
                                                             content +="<div class=''>";
                                                             content +="<center>";
-                                                            if(button_S=="Y" )
+                                                            if(button_S=="Y" && $(this).text().search('Add')!=-1 )
                                                             content +="<button type='submit' class='btn btn-lg btn-primary'>SAVE</button>";
-                                                            if(button_U=="Y" )
+                                                            if(button_U=="Y" && $(this).text().search('Edit')!=-1 )
                                                             content +="<button type='submit' class='btn btn-lg btn-primary'>UPDATE</button>";
-                                                            if( button_D=="Y")
+                                                            if( button_D=="Y" && $(this).text().search('table')!=-1 )
                                                             content +="<button type='submit' class='btn btn-lg btn-danger'>DELETE</button>";
-                                                            if( button_C=="Y")
+                                                            if( button_C=="Y" && $(this).text().search('Add')!=-1 )
                                                             content +="<button class='btn btn-lg btn-danger'>CANCEL</button>";
                                                             content +="</center>";
                                                             content +="</div>";

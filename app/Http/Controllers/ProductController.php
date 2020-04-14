@@ -13,20 +13,22 @@ class ProductController extends Controller
         {
            $data=$request->all();
            $product = new Products;
+           dd($data);
+           exit;
            /// `name`, `code`, `desc`, `price`,
-           $product->name=$data['product_name'];
-           $product->code=$data['product_code']; 
-           $product->color=$data['product_color']; 
-           $product->desc=$data['product_desc']; 
-           $product->price=$data['product_price']; 
+           $product->name=$data['PRODUCT_NAME'];
+           $product->code=$data['PRODUCT_CODE']; 
+           $product->color=$data['PRODUCT_COLOR']; 
+           $product->desc=$data['PRODUCT_DESCRIPTION']; 
+           $product->price=$data['PRODUCT_PRICE']; 
            $product->images=''; 
         //    request()->validate([
         //     'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         //     ]);
-           if($request->hasfile('images'))
+           if($request->hasfile('PRODUCT_IMAGES'))
            {
                
-               $images=$request->file('images');
+               $images=$request->file('PRODUCT_IMAGES');
                foreach($images as $key=>$value){
                //$filename .= time() . '/.' . $images[$key]->getClientOriginalExtension();
                $filename[] = time().$images[$key]->getClientOriginalName();
