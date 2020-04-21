@@ -13,9 +13,7 @@ class ProductController extends Controller
         {
            $data=$request->all();
            $product = new Products;
-           dd($data);
-           exit;
-           /// `name`, `code`, `desc`, `price`,
+          /// `name`, `code`, `desc`, `price`,
            $product->name=$data['PRODUCT_NAME'];
            $product->code=$data['PRODUCT_CODE']; 
            $product->color=$data['PRODUCT_COLOR']; 
@@ -32,16 +30,14 @@ class ProductController extends Controller
                foreach($images as $key=>$value){
                //$filename .= time() . '/.' . $images[$key]->getClientOriginalExtension();
                $filename[] = time().$images[$key]->getClientOriginalName();
-               $path = 'frontEnd/uploads/' . time().$images[$key]->getClientOriginalName();
+               $path =  time().$images[$key]->getClientOriginalName();
+               $images[$key]->move('frontEnd/uploads/',$path);
                 //Image::make($data['profile_img']->getRealPath())->resize(100,100)->save(public_path($path));   
                 }
-                echo "<pre>";
-                $filename= json_encode($filename);
-               print_r($filename);
+                $product->images=json_encode($filename);
            }
-           //$product->save();
-           dd($data);
-           exit;
+           return $product->save();
+           
         }   
         return view('admin.products.product');
     }

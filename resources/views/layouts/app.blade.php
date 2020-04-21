@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Shoping Add') }}</title>
     <!-- Favicon-->
     <link rel="icon" href="{{asset('frontEnd/favicon.ico')}}" type="image/x-icon">
-    
+
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -33,11 +33,11 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{asset('frontEnd/css/themes/all-themes.css')}}" rel="stylesheet" />
-     
+
 </head>
 
 <body class="theme-red">
-    <!-- Page Loader -->
+    <!-- Page Loader-->
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -160,7 +160,7 @@
                         </ul>
                     </li>
                     <!-- #END# Tasks -->
-                    
+
                     <!-- Notifications -->
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
@@ -334,7 +334,7 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">ADMIN PANEL</li>
-                    
+
                     <li class="active">
                                     <a href="{{ route('/') }}">
                                          <i class="material-icons">home</i>
@@ -528,12 +528,12 @@
         <div class="container-fluid">
             <!-- No Header Card -->
             <div class="row">
-               
+
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="body bg-blue-grey">
                             <div class="row">
-               
+
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                     <div class="card">
                                         <div class="body bg-blue-grey">
@@ -554,7 +554,7 @@
                                                 <li>Terms of Use </li>
                                                 <li>Security</li>
                                                 <li>Privacy</li>
-                                           </ul>    
+                                           </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -587,9 +587,9 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
-            
+
             <!-- #END# No Header Card -->
         </div>
     </section>
@@ -617,22 +617,22 @@
     <script src="{{asset('frontEnd/plugins/raphael/raphael.min.js')}}"></script>
     <script src="{{asset('frontEnd/plugins/morrisjs/morris.js')}}"></script>
 
-    <!-- ChartJs 
+    <!-- ChartJs
     <script src="{{asset('frontEnd/plugins/chartjs/Chart.bundle.js')}}"></script>
 
-    <!-- Flot Charts Plugin Js 
+    <!-- Flot Charts Plugin Js
     <script src="{{asset('frontEnd/plugins/flot-charts/jquery.flot.js')}}"></script>
     <script src="{{asset('frontEnd/plugins/flot-charts/jquery.flot.resize.js')}}"></script>
     <script src="{{asset('frontEnd/plugins/flot-charts/jquery.flot.pie.js')}}"></script>
     <script src="{{asset('frontEnd/plugins/flot-charts/jquery.flot.categories.js')}}"></script>
     <script src="{{asset('frontEnd/plugins/flot-charts/jquery.flot.time.js')}}"></script>
- <!-- <script src="{{asset('frontEnd/js/pages/index.js')}}"></script> 
-    <!-- Sparkline Chart Plugin Js 
+ <!-- <script src="{{asset('frontEnd/js/pages/index.js')}}"></script>
+    <!-- Sparkline Chart Plugin Js
     <script src="{{asset('frontEnd/plugins/jquery-sparkline/jquery.sparkline.js')}}"></script> --->
 
     <!-- Custom Js -->
     <script src="{{asset('frontEnd/js/admin.js')}}"></script>
-  
+
 
     <!-- Demo Js -->
     <script src="{{asset('frontEnd/js/demo.js')}}"></script>
