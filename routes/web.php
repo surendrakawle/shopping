@@ -23,7 +23,7 @@ Auth::routes();
 
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
-    
+
     Route::resource('/users','UserController',['except'=>['show','create','store']]);
 });
 Route::match(['get','post'],'/products/add-product','ProductController@addProduct')->name('products.add-product')->middleware('can:manage-users');
@@ -31,3 +31,9 @@ Route::match(['get','post'],'/formDefination','FormDefinationController@index')-
 Auth::routes();
 // Route::match(['get','post'],'/','indexController@index');
 
+Route::get('/productdesc', function () {
+    return view('product_desc');
+})->name('productdesc');
+Route::get('/order', function () {
+    return view('order');
+})->name('order');

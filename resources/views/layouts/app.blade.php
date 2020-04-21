@@ -24,7 +24,7 @@
 
     <!-- Animation Css -->
     <link href="{{asset('frontEnd/plugins/animate-css/animate.css')}}" rel="stylesheet" />
-
+     
     <!-- Morris Chart Css-->
     <link href="{{asset('frontEnd/plugins/morrisjs/morris.css')}}" rel="stylesheet" />
 
@@ -37,7 +37,7 @@
 </head>
 
 <body class="theme-red">
-    <!-- Page Loader-->
+    <!-- Page Loader
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -52,7 +52,7 @@
             </div>
             <p>Please wait...</p>
         </div>
-    </div>
+    </div>-->
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>

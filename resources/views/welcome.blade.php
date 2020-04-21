@@ -9,7 +9,7 @@
                         <div class="profile-header">&nbsp;</div>
                         <div class="profile-body">
                             <div class="image-area">
-                                <img src="../../images/user-lg.jpg" alt="AdminBSB - Profile Image" />
+                                <img src="{{asset('frontEnd/images/user-lg.jpg')}}" alt="Profile Image" />
                             </div>
                             <div class="content-area">
                                 <h3>Marc K. Hammond</h3>
@@ -299,6 +299,10 @@
                     </div>
                 </div>
             </div>
-       
+
 
 @endsection
+<!-- Light Gallery Plugin Js -->
+<script src="{{asset('frontEnd/plugins/light-gallery/js/lightgallery-all.js')}}"></script>
+ <!-- Custom Js -->
+ <script src="{{asset('frontEnd/js/pages/medias/image-gallery.js')}}"></script>

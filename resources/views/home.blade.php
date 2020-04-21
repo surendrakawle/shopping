@@ -4,34 +4,25 @@
 
             <div class="row clearfix">
 
-            <!-- With Captions -->
+            <!-- With T - Shirttions -->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="body">
                             <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
-                            
+
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner" role="listbox">
                                     <div class="item active">
-                                        <img src="{{asset('frontEnd/images/image-gallery/10.jpg')}}"  />
-                                        <div class="carousel-caption">
-                                            <h3>First slide label</h3>
-                                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                                        </div>
+                                        <img src="{{asset('frontEnd/images/image-gallery/7.jpg')}}"  />
+                                        
                                     </div>
                                     <div class="item">
-                                        <img src="{{asset('frontEnd/images/image-gallery/12.jpg')}}" />
-                                        <div class="carousel-caption">
-                                            <h3>Second slide label</h3>
-                                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                                        </div>
+                                        <img src="{{asset('frontEnd/images/image-gallery/15.jpg')}}" />
+                                        
                                     </div>
                                     <div class="item">
-                                        <img src="{{asset('frontEnd/images/image-gallery/19.jpg')}}" />
-                                        <div class="carousel-caption">
-                                            <h3>Third slide label</h3>
-                                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                                        </div>
+                                        <img src="{{asset('frontEnd/images/image-gallery/16.jpg')}}" />
+                                        
                                     </div>
                                 </div>
                                 <!-- Controls -->
@@ -45,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- #END# With Captions -->
+                <!-- #END# With T - Shirttions -->
 
             </div>
 
@@ -55,7 +46,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Best Seller 
+                                Top 10 Product
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -74,60 +65,64 @@
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                     <div class="thumbnail">
-                                        <img src="http://placehold.it/500x300">
-                                        <div class="caption">
-                                            <h3>Thumbnail label</h3>
+                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
+                                        <div class="T - Shirttion">
+                                            <h3>T - Shirt</h3>
                                             <p>
                                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
                                                 text ever since the 1500s
                                             </p>
                                             <p>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect" role="button">BUTTON</a>
+                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
+                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                     <div class="thumbnail">
-                                        <img src="http://placehold.it/500x300">
-                                        <div class="caption">
-                                            <h3>Thumbnail label</h3>
+                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
+                                        <div class="T - Shirttion">
+                                            <h3>T - Shirt</h3>
                                             <p>
                                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
                                                 text ever since the 1500s
                                             </p>
                                             <p>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect" role="button">BUTTON</a>
+                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
+                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                     <div class="thumbnail">
-                                        <img src="http://placehold.it/500x300">
-                                        <div class="caption">
-                                            <h3>Thumbnail label</h3>
+                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
+                                        <div class="T - Shirttion">
+                                            <h3>T - Shirt</h3>
                                             <p>
                                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
                                                 text ever since the 1500s
                                             </p>
                                             <p>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect" role="button">BUTTON</a>
+                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
+                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                     <div class="thumbnail">
-                                        <img src="http://placehold.it/500x300">
-                                        <div class="caption">
-                                            <h3>Thumbnail label</h3>
+                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
+                                        <div class="T - Shirttion">
+                                            <h3>T - Shirt</h3>
                                             <p>
                                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
                                                 text ever since the 1500s
                                             </p>
                                             <p>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect" role="button">BUTTON</a>
+                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
+                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
                                             </p>
                                         </div>
                                     </div>
@@ -150,7 +145,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Best Seller 
+                                Best Product
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -169,60 +164,64 @@
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                     <div class="thumbnail">
-                                        <img src="http://placehold.it/500x300">
-                                        <div class="caption">
-                                            <h3>Thumbnail label</h3>
+                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
+                                        <div class="T - Shirttion">
+                                            <h3>T - Shirt</h3>
                                             <p>
                                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
                                                 text ever since the 1500s
                                             </p>
                                             <p>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect" role="button">BUTTON</a>
+                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
+                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                     <div class="thumbnail">
-                                        <img src="http://placehold.it/500x300">
-                                        <div class="caption">
-                                            <h3>Thumbnail label</h3>
+                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
+                                        <div class="T - Shirttion">
+                                            <h3>T - Shirt</h3>
                                             <p>
                                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
                                                 text ever since the 1500s
                                             </p>
                                             <p>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect" role="button">BUTTON</a>
+                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
+                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                     <div class="thumbnail">
-                                        <img src="http://placehold.it/500x300">
-                                        <div class="caption">
-                                            <h3>Thumbnail label</h3>
+                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
+                                        <div class="T - Shirttion">
+                                            <h3>T - Shirt</h3>
                                             <p>
                                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
                                                 text ever since the 1500s
                                             </p>
                                             <p>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect" role="button">BUTTON</a>
+                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
+                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                     <div class="thumbnail">
-                                        <img src="http://placehold.it/500x300">
-                                        <div class="caption">
-                                            <h3>Thumbnail label</h3>
+                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
+                                        <div class="T - Shirttion">
+                                            <h3>T - Shirt</h3>
                                             <p>
                                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
                                                 text ever since the 1500s
                                             </p>
                                             <p>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect" role="button">BUTTON</a>
+                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
+                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
                                             </p>
                                         </div>
                                     </div>

@@ -28,10 +28,10 @@
                             </ul>
                         </div>
                         <div class="body">
-                           <div class="card-body table-responsive-sm table-responsive-md table-responsive-lg">
+                <div class="card-body responsive table-responsive-sm table-responsive-md table-responsive-lg">
                 
-                   <table class="table table-sm">
-                   <thead class="">
+                   <table class="table table-sm" max-width="100%">
+                   <thead class=""  max-width="100%">
                    <tr class="bg-primary">
                         <th scope="col" width="18%">Name</th>
                         <th scope="col" width="22%">Email</th>
@@ -41,7 +41,7 @@
                         <th scope="col" > </th>
                     </tr>
                    </thead>
-                   <tbody>
+                   <tbody  max-width="100%">
                    @foreach( $users as $user)
                    <tr>
                         <td>{{$user->name}} </td>
