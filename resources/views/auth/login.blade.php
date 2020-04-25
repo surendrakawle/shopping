@@ -16,10 +16,11 @@
 
                                 <form method="POST" class="form-horizontal" action="{{ route('login') }}">
                                     @csrf
-                                <div class="form-group row">
-                                     <label for="email" class="col-md-6 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-                                        <div class="col-md-6">
-                                           <div class="form-line">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">person</i>
+                                    </span>
+                                    <div class="form-line">
                                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                                 @error('email')
@@ -27,14 +28,15 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
-                                           </div>
-                                       </div>
+                                    </div>
+
 
                                 </div>
-                                <div class="form-group row ">
+                                <div class="input-group ">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">lock</i>
+                                    </span>
 
-                                     <label for="password" class="col-md-6 col-form-label text-md-right">{{ __('Password') }}</label>
-                                     <div class="col-md-6">
                                            <div class="form-line">
                                                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
@@ -45,7 +47,7 @@
                                                     @enderror
 
                                             </div>
-                                       </div>
+
 
                                 </div>
 

@@ -1,4 +1,24 @@
-﻿/* Navbar ====================================== */
+﻿/* If the screen size is 601px or more, set the font-size of <div> to 80px */
+
+
+/* If the screen size is 600px or less, set the font-size of <div> to 30px */
+
+@media only screen and (max-width: 2000px) {
+    .img_response {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .img_response {
+        width: 50%;
+        height: 50%;
+    }
+}
+
+
+/* Navbar ====================================== */
 
 @import url(materialize.css);
 .navbar {

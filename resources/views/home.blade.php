@@ -11,18 +11,18 @@
                             <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
 
                                 <!-- Wrapper for slides -->
-                                <div class="carousel-inner" role="listbox">
+                                <div class="carousel-inner " role="listbox">
                                     <div class="item active">
-                                        <img src="{{asset('frontEnd/images/image-gallery/7.jpg')}}"  />
-                                        
+                                        <img src="{{asset('frontEnd/images/image-gallery/1.jpg')}}"  />
+
                                     </div>
                                     <div class="item">
-                                        <img src="{{asset('frontEnd/images/image-gallery/15.jpg')}}" />
-                                        
+                                        <img src="{{asset('frontEnd/images/image-gallery/1.jpg')}}" />
+
                                     </div>
                                     <div class="item">
-                                        <img src="{{asset('frontEnd/images/image-gallery/16.jpg')}}" />
-                                        
+                                        <img src="{{asset('frontEnd/images/image-gallery/1.jpg')}}" />
+
                                     </div>
                                 </div>
                                 <!-- Controls -->
@@ -48,85 +48,38 @@
                             <h2>
                                 Top 10 Product
                             </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+
                         </div>
                         <div class="body">
                             <div class="row">
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                @for ($i=0;$i<4;$i++)
+
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
                                     <div class="thumbnail">
                                         <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
                                         <div class="T - Shirttion">
-                                            <h3>T - Shirt</h3>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                text ever since the 1500s
-                                            </p>
-                                            <p>
-                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
-                                            </p>
+
+                                                <h4>T - shirt</h4>
+                                                <div class="star-rating">
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item"> <i class="material-icons">star_border</i></li>
+                                                        <li class="list-inline-item"><i class="material-icons">star_border</i></li>
+                                                        <li class="list-inline-item"><i class="material-icons">star_border</i></li>
+                                                        <li class="list-inline-item"><i class="material-icons">star_border</i></li>
+                                                        <li class="list-inline-item"><i class="material-icons">star_half</i><li>
+                                                    </ul>
+                                                </div>
+                                                <p class="item-price"><strike>$400.00</strike> <b>$369.00</b></p>
+                                                <a  class="btn btn-primary  waves-effect"><i class="material-icons">add_shopping_cart</i></a>
+                                                <a  class="btn btn-primary pull-right waves-effect"> <i class="material-icons">favorite</i></a>
+
+
                                         </div>
-                                    </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                    <div class="thumbnail">
-                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
-                                        <div class="T - Shirttion">
-                                            <h3>T - Shirt</h3>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                text ever since the 1500s
-                                            </p>
-                                            <p>
-                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                    <div class="thumbnail">
-                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
-                                        <div class="T - Shirttion">
-                                            <h3>T - Shirt</h3>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                text ever since the 1500s
-                                            </p>
-                                            <p>
-                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                    <div class="thumbnail">
-                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
-                                        <div class="T - Shirttion">
-                                            <h3>T - Shirt</h3>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                text ever since the 1500s
-                                            </p>
-                                            <p>
-                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+
+                                @endfor
+
                             </div>
                         </div>
                     </div>
@@ -147,85 +100,37 @@
                             <h2>
                                 Best Product
                             </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+
                         </div>
                         <div class="body">
                             <div class="row">
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                @for ($i=0;$i<4;$i++)
+
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
                                     <div class="thumbnail">
                                         <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
                                         <div class="T - Shirttion">
-                                            <h3>T - Shirt</h3>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                text ever since the 1500s
-                                            </p>
-                                            <p>
-                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
-                                            </p>
+
+                                                <h4>T - shirt</h4>
+                                                <div class="star-rating">
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item"> <i class="material-icons">star_border</i></li>
+                                                        <li class="list-inline-item"><i class="material-icons">star_border</i></li>
+                                                        <li class="list-inline-item"><i class="material-icons">star_border</i></li>
+                                                        <li class="list-inline-item"><i class="material-icons">star_border</i></li>
+                                                        <li class="list-inline-item"><i class="material-icons">star_half</i><li>
+                                                    </ul>
+                                                </div>
+                                                <p class="item-price"><strike>$400.00</strike> <b>$369.00</b></p>
+                                                <a  class="btn btn-primary  waves-effect"><i class="material-icons">add_shopping_cart</i></a>
+                                                <a  class="btn btn-primary pull-right waves-effect"> <i class="material-icons">favorite</i></a>
+
+
                                         </div>
-                                    </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                    <div class="thumbnail">
-                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
-                                        <div class="T - Shirttion">
-                                            <h3>T - Shirt</h3>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                text ever since the 1500s
-                                            </p>
-                                            <p>
-                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                    <div class="thumbnail">
-                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
-                                        <div class="T - Shirttion">
-                                            <h3>T - Shirt</h3>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                text ever since the 1500s
-                                            </p>
-                                            <p>
-                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                    <div class="thumbnail">
-                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
-                                        <div class="T - Shirttion">
-                                            <h3>T - Shirt</h3>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                text ever since the 1500s
-                                            </p>
-                                            <p>
-                                                <a href="{{asset('productdesc')}}" class="btn btn-primary waves-effect" role="button">  BUY NOW </a>
-                                                <a href="javascript:void(0);" class="btn btn-primary waves-effect pull-right" role="button"> Rs. 200  </a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+
+                                @endfor
                             </div>
                         </div>
                     </div>
