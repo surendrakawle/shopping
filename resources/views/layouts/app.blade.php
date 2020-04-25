@@ -24,7 +24,7 @@
 
     <!-- Animation Css -->
     <link href="{{asset('frontEnd/plugins/animate-css/animate.css')}}" rel="stylesheet" />
-     
+
     <!-- Morris Chart Css-->
     <link href="{{asset('frontEnd/plugins/morrisjs/morris.css')}}" rel="stylesheet" />
 
@@ -36,7 +36,7 @@
 
 </head>
 
-<body class="theme-red">
+<body class="theme-red ">
     <!-- Page Loader
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -341,6 +341,7 @@
                                          <span>Home</span>
                                     </a>
                     </li>
+
                          @can('admin-users')
                     <li>
                                     <a href="{{ route('admin.users.index') }}">
@@ -357,6 +358,37 @@
                                     </a>
                     </li>
                      @endcan
+                     <li class="">
+                        <a href="{{ route('/') }}">
+                             <i class="material-icons">home</i>
+                             <span>Cart</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{ route('/') }}">
+                             <i class="material-icons">home</i>
+                             <span>Account</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{ route('/') }}">
+                             <i class="material-icons">home</i>
+                             <span>Order</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{{ route('/') }}">
+                             <i class="material-icons">home</i>
+                             <span>Contact Us</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{ route('/') }}">
+                             <i class="material-icons">home</i>
+                             <span>Help</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->
