@@ -37,6 +37,5 @@ Route::get('/productdesc', function () {
 Route::get('/order', function () {
     return view('order');
 })->name('order');
-Route::get('/wishlist', function () {
-    return view('wishlist');
-})->name('wishlist');
+Route::get('/wishlist', function () {return view('wishlist');})->name('wishlist');
+Route::get('/faq',function (){ return view('faq'); })->name('faq');

@@ -412,7 +412,7 @@
                              <span>Image Gallery</span>
                         </a>
                     </li>
-                    
+
                      @endcan
                      <li class="">
                         <a href="{{ route('order') }}">
@@ -426,7 +426,7 @@
                              <span>Account</span>
                         </a>
                     </li>
-                    
+
 
                     <li class="">
                         <a href="{{ route('/') }}">
@@ -435,7 +435,7 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="{{ route('/') }}">
+                        <a href="{{ route('faq') }}">
                              <i class="material-icons">help</i>
                              <span>Help</span>
                         </a>
@@ -600,20 +600,20 @@
         <!-- #END# Right Sidebar -->
     </section>
 
-    <section class="content">
+    <section class="content" >
         <div class="container-fluid">
              @yield('content')
         </div>
     </section>
 
 
-    <section class="content">
+    <section class="content" style="margin-right:0px!important;margin-left:0px!important;">
         <div class="container-fluid">
             <!-- No Header Card -->
             <div class="row">
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-0" >
+                    <div class="card" style="margin-bottom:0px!important;">
                         <div class="body bg-blue-grey">
                             <div class="row">
 

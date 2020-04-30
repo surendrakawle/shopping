@@ -5,7 +5,7 @@
             <div class="row clearfix">
 
             <!-- With T - Shirttions -->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-0" >
                     <div class="card">
                         <div class="body">
                             <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">

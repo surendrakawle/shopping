@@ -15,30 +15,30 @@
                         </div>
                         <div class="body  table-responsive">
                              <form  id="upload_image_form" action="javascript:void(0)" class="form-horizontal addForm"  enctype="multipart/form-data" method="POST">
-                            </form>    
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-           
+
 @endsection
 <!-- Jquery Core Js -->
     <script src="{{asset('frontEnd/plugins/jquery/jquery.min.js')}}"></script>
-    
-   
+
+
 
     <script type="text/javascript">
-     
+
     $(document).ready(function (e) {
-  
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
- 
-        
- 
+
+
+
         $('#upload_image_form').submit(function(e) {
             e.preventDefault();
             var formData = new FormData(this);
@@ -60,5 +60,5 @@
             });
         });
     });
- 
+
 </script>
