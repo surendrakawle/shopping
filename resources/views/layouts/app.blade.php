@@ -364,7 +364,7 @@
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li class="header">ADMIN PANEL</li>
+                    <li class="header"></li>
 
                     <li class="active">
                                     <a href="{{ route('/') }}">
