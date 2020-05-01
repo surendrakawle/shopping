@@ -10512,6 +10512,16 @@ fieldset[disabled] .form-control {
     font-weight: bold;
     font-size: 14px;
     overflow: hidden;
+    letter-spacing: 1px;
+}
+
+.sidebar .menu .list a span:hover {
+    margin: 7px 0 7px 12px;
+    color: #f72929;
+    font-weight: bold;
+    font-size: 15px;
+    overflow: hidden;
+    letter-spacing: 2px;
 }
 
 .sidebar .menu .list .ml-menu {

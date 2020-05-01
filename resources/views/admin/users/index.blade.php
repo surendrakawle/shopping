@@ -7,41 +7,22 @@
                                 <div class="col-xs-12 col-sm-6">
                                     <h2>Users</h2>
                                 </div>
-                                <div class="col-xs-12 col-sm-6 align-right">
-                                    <div class="switch panel-switch-btn">
-                                        <span class="m-r-10 font-12">REAL TIME</span>
-                                        <label>OFF<input type="checkbox" id="realtime" checked><span class="lever switch-col-cyan"></span>ON</label>
-                                    </div>
-                                </div>
                             </div>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            
                         </div>
-                        <div class="body">
-                <div class="card-body responsive table-responsive-sm table-responsive-md table-responsive-lg">
-                
-                   <table class="table table-sm" max-width="100%">
-                   <thead class=""  max-width="100%">
-                   <tr class="bg-primary">
-                        <th scope="col" width="18%">Name</th>
-                        <th scope="col" width="22%">Email</th>
-                        <th scope="col" width="20%">Roles</th>
-                        <th scope="col" width="18%">Created at </th>
-                        <th scope="col" > </th>
-                        <th scope="col" > </th>
-                    </tr>
+                        <div class="body table-responsive">
+                <table class="table">
+                   <thead >
+                            <tr class="bg-primary">
+                                 <th >Name</th>
+                                 <th >Email</th>
+                                 <th >Roles</th>
+                                 <th>Created at </th>
+                                 <th > </th>
+                                 <th > </th>
+                             </tr>
                    </thead>
-                   <tbody  max-width="100%">
+                   <tbody>
                    @foreach( $users as $user)
                    <tr>
                         <td>{{$user->name}} </td>
