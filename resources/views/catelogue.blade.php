@@ -7,10 +7,10 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Product
+                                Catelogue
                             </h2>
-                            <ul class=" btn btn-lg btn-primary header-dropdown m-r--5" id="addFormAction" data-form="PRODUCT">
-                               Add Product
+                            <ul class=" btn btn-lg btn-primary header-dropdown m-r--5" id="addFormAction" data-form="CATELOGUE">
+                               Add Catelogue
                             </ul>
                         </div>
                         <div class="body  table-responsive">
@@ -45,14 +45,13 @@
             console.log("");
             $.ajax({
                 type:'POST',
-                url: "{{ route('products.add-product')}}",
+                url: "/catelogue",
                 data: formData,
                 cache:false,
                 contentType: false,
                 processData: false,
                 success: (data) => {
                     this.reset();
-                    alert('Image has been uploaded successfully');
                 },
                 error: function(data){
                     console.log(data);

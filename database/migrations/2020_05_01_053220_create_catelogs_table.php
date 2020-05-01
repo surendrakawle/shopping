@@ -15,6 +15,11 @@ class CreateCatelogsTable extends Migration
     {
         Schema::create('catelogs', function (Blueprint $table) {
             $table->id();
+            $table->string('catelogue_name',255);
+            $table->string('description',255)->nullable();
+            $table->integer('status')->default(1);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
     }

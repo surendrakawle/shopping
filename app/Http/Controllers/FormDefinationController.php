@@ -9,7 +9,7 @@ class FormDefinationController extends Controller
     public function index(Request $request)
     {
 
-       $form =FormDefination::all()->where('name',$request->name); 
+       $form =FormDefination::where('name','=',$request->name)->first();
         return $form;
     }
 }

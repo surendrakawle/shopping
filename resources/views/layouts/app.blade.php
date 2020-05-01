@@ -389,13 +389,19 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="{{ route('/') }}">
+                        <a href="{{ url('/category') }}">
                              <i class="material-icons">device_hub</i>
                              <span>Category</span>
                         </a>
                     </li>
                     <li class="">
-                        <a href="{{ route('/') }}">
+                        <a href="{{ url('/catelogue') }}">
+                             <i class="material-icons">device_hub</i>
+                             <span>Catelogue</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{ url('/') }}">
                              <i class="material-icons">store</i>
                              <span>Sale</span>
                         </a>

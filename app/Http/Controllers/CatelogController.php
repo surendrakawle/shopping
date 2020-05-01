@@ -14,7 +14,7 @@ class CatelogController extends Controller
      */
     public function index()
     {
-        //
+        return view('catelogue');
     }
 
     /**
@@ -24,7 +24,7 @@ class CatelogController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,11 @@ class CatelogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            ""=>$request->CATELOGUE_NAME,
+            ""=>$request->CATELOGUE_DESCRIPTION,
+        ]);
+        dd($request);
     }
 
     /**

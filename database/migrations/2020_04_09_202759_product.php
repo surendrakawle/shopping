@@ -19,9 +19,12 @@ class Product extends Migration
             $table->string('name');
             $table->string('code')->unique();
             $table->string('desc');
-            $table->string('color');
+            $table->string('color')->nullable();
             $table->string('price');
-            $table->string('images');
+            $table->string('images')->nullable();
+            $table->integer('status')->default(1);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

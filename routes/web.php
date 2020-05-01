@@ -28,7 +28,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 });
 Route::match(['get','post'],'/products/add-product','ProductController@addProduct')->name('products.add-product')->middleware('can:manage-users');
 Route::match(['get','post'],'/formDefination','FormDefinationController@index')->name('formDefination')->middleware('can:manage-users');
-Auth::routes();
+Route::resource('category', 'CategoryController');
+Route::resource('catelogue', 'CatelogController');
 // Route::match(['get','post'],'/','indexController@index');
 
 Route::get('/productdesc', function () {

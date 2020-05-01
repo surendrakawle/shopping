@@ -7,10 +7,10 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Product
+                                Category
                             </h2>
-                            <ul class=" btn btn-lg btn-primary header-dropdown m-r--5" id="addFormAction" data-form="PRODUCT">
-                               Add Product
+                            <ul class=" btn btn-lg btn-primary header-dropdown m-r--5" id="addFormAction" data-form="CATEGORY">
+                               Add Category
                             </ul>
                         </div>
                         <div class="body  table-responsive">
@@ -24,9 +24,6 @@
 @endsection
 <!-- Jquery Core Js -->
     <script src="{{asset('frontEnd/plugins/jquery/jquery.min.js')}}"></script>
-
-
-
     <script type="text/javascript">
 
     $(document).ready(function (e) {
