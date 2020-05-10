@@ -43,7 +43,7 @@
             <!-- Custom Content -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
+                    <div class="">
                         <div class="header">
                             <h2>
                                 Top 10 Product
@@ -52,9 +52,9 @@
                         </div>
                         <div class="body">
                             <div class="row">
-                                @for ($i=0;$i<4;$i++)
+                                @for ($i=0;$i<15;$i++)
 
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 ">
                                     <div class="thumbnail">
                                         <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
                                         <div class="T - Shirttion">
@@ -63,8 +63,6 @@
                                                 <div class="star-rating">
                                                     <ul class="list-inline">
                                                         <li class="list-inline-item"> <i class="material-icons">star_border</i></li>
-                                                        <li class="list-inline-item"><i class="material-icons">star_border</i></li>
-                                                        <li class="list-inline-item"><i class="material-icons">star_border</i></li>
                                                         <li class="list-inline-item"><i class="material-icons">star_border</i></li>
                                                         <li class="list-inline-item"><i class="material-icons">star_half</i><li>
                                                     </ul>
@@ -92,48 +90,6 @@
                         </div>
                     @endif   --->
 
-            <!-- Custom Content -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Best Product
-                            </h2>
-
-                        </div>
-                        <div class="body">
-                            <div class="row">
-                                @for ($i=0;$i<4;$i++)
-
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
-                                    <div class="thumbnail">
-                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
-                                        <div class="T - Shirttion">
-
-                                                <h4>T - shirt</h4>
-                                                <div class="star-rating">
-                                                    <ul class="list-inline">
-                                                        <li class="list-inline-item"> <i class="material-icons">star_border</i></li>
-                                                        <li class="list-inline-item"><i class="material-icons">star_border</i></li>
-                                                        <li class="list-inline-item"><i class="material-icons">star_border</i></li>
-                                                        <li class="list-inline-item"><i class="material-icons">star_border</i></li>
-                                                        <li class="list-inline-item"><i class="material-icons">star_half</i><li>
-                                                    </ul>
-                                                </div>
-                                                <p class="item-price"><strike>$400.00</strike> <b>$369.00</b></p>
-                                                <a  class="btn btn-primary  waves-effect"><i class="material-icons">add_shopping_cart</i></a>
-                                                <a  class="btn btn-primary pull-right waves-effect"> <i class="material-icons">favorite</i></a>
 
 
-                                        </div>
-                                </div>
-                                </div>
-
-                                @endfor
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 @endsection

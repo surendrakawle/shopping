@@ -17,7 +17,6 @@ Route::get('/profile', function () {
     return view('welcome');
 })->name('profile');
 Route::get('/', 'HomeController@index')->name('/');
-//Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -30,6 +29,7 @@ Route::match(['get','post'],'/products/add-product','ProductController@addProduc
 Route::match(['get','post'],'/formDefination','FormDefinationController@index')->name('formDefination')->middleware('can:manage-users');
 Route::resource('category', 'CategoryController');
 Route::resource('catelogue', 'CatelogController');
+Route::resource('home', 'HomeController');
 // Route::match(['get','post'],'/','indexController@index');
 
 Route::get('/productdesc', function () {
