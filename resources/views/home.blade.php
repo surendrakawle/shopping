@@ -54,7 +54,7 @@
                             <div class="row">
                                 @for ($i=0;$i<15;$i++)
 
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 ">
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 prod">
                                     <div class="thumbnail">
                                         <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
                                         <div class="T - Shirttion">

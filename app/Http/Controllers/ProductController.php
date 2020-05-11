@@ -39,6 +39,6 @@ class ProductController extends Controller
            return $product->save();
 
         }
-        return view('admin.products.product');
+        return "WORKING";//view('admin.products.product');
     }
 }

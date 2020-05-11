@@ -33,7 +33,7 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{asset('frontEnd/css/themes/all-themes.css')}}" rel="stylesheet" />
-
+    @yield('style')
 </head>
 
 <body class="theme-red ">
@@ -395,7 +395,7 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="{{ url('/catelogue') }}">
+                        <a href="{{ url('/catalogue') }}">
                              <i class="material-icons">device_hub</i>
                              <span>Catelogue</span>
                         </a>
@@ -706,27 +706,23 @@
     <script src="{{asset('frontEnd/plugins/raphael/raphael.min.js')}}"></script>
     <script src="{{asset('frontEnd/plugins/morrisjs/morris.js')}}"></script>
 
-    <!-- ChartJs
-    <script src="{{asset('frontEnd/plugins/chartjs/Chart.bundle.js')}}"></script>
 
-    <!-- Flot Charts Plugin Js
-    <script src="{{asset('frontEnd/plugins/flot-charts/jquery.flot.js')}}"></script>
-    <script src="{{asset('frontEnd/plugins/flot-charts/jquery.flot.resize.js')}}"></script>
-    <script src="{{asset('frontEnd/plugins/flot-charts/jquery.flot.pie.js')}}"></script>
-    <script src="{{asset('frontEnd/plugins/flot-charts/jquery.flot.categories.js')}}"></script>
-    <script src="{{asset('frontEnd/plugins/flot-charts/jquery.flot.time.js')}}"></script>
- <!-- <script src="{{asset('frontEnd/js/pages/index.js')}}"></script>
-    <!-- Sparkline Chart Plugin Js
-    <script src="{{asset('frontEnd/plugins/jquery-sparkline/jquery.sparkline.js')}}"></script> --->
+
 
     <!-- Custom Js -->
     <script src="{{asset('frontEnd/js/admin.js')}}"></script>
+
+
+    <!-- Bootstrap Notify Plugin Js -->
+    <script src="{{asset('frontEnd/plugins/bootstrap-notify/bootstrap-notify.js')}}"></script>
+    <script src="{{asset('frontEnd/js/pages/ui/notifications.js')}}"></script>
 
 
     <!-- Demo Js -->
     <script src="{{asset('frontEnd/js/demo.js')}}"></script>
 
     <script src="{{asset('frontEnd/js/product.js')}}"></script>
+    @yield('script')
 </body>
 
 </html>

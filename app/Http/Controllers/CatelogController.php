@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class CatelogController extends Controller
 {
+    public function __construct()
+    {
+        $this->Catelog = new Catelog;
+        $this->title = 'Catelog';
+        $this->path = 'admin/catalogue/';
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,9 +20,19 @@ class CatelogController extends Controller
      */
     public function index()
     {
-        return view('catelogue');
+        return view($this->path.'index');
     }
 
+   public function getCatalogue(){
+    $data = $this->Catelog->getData();
+    return \DataTables::of($data)
+        ->addColumn('Actions', function($data) {
+            return '<button type="button" class="btn btn-success btn-sm" id="getEditProductData" data-id="'.$data->id.'">Edit</button>
+                <button type="button" data-id="'.$data->id.'" data-toggle="modal" data-target="#DeleteProductModal" class="btn btn-danger btn-sm" id="getDeleteId">Delete</button>';
+        })
+        ->rawColumns(['Actions'])
+        ->make(true);
+   }
     /**
      * Show the form for creating a new resource.
      *
@@ -35,11 +51,17 @@ class CatelogController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            ""=>$request->CATELOGUE_NAME,
-            ""=>$request->CATELOGUE_DESCRIPTION,
+        $validator = \Validator::make($request->all(), [
+            'catelogue_name' => 'required',
         ]);
-        dd($request);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $this->Catelog->storeData($request->all());
+
+        return response()->json(['success'=>'Catalogue added successfully']);
     }
 
     /**
@@ -59,9 +81,26 @@ class CatelogController extends Controller
      * @param  \App\Catelog  $catelog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Catelog $catelog)
+    public function edit($id)
     {
-        //
+        $data = $this->Catelog->findData($id);
+
+        $html = '<div class="form-group error"></div>
+                <label for="catelogue_name">Name</label>
+                <div class="form-group">
+                    <div class="form-line">
+                        <input type="text" id="editcatelogue_name" name="editcatelogue_name" value="'.$data->catelogue_name.'" class="form-control" placeholder="Enter your catalogue name">
+                    </div>
+                </div>
+                <label for="description">Description</label>
+                <div class="form-group">
+                    <div class="form-line">
+                        <input type="text" id="editDescription" name="editDescription" value="'.$data->description.'" class="form-control" placeholder="Enter your description">
+                    </div>
+                </div>
+                <br>
+               ';
+        return response()->json(['html'=>$html]);
     }
 
     /**
@@ -71,9 +110,19 @@ class CatelogController extends Controller
      * @param  \App\Catelog  $catelog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Catelog $catelog)
+    public function update(Request $request,$id)
     {
-        //
+        $validator = \Validator::make($request->all(), [
+            'catelogue_name' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $this->Catelog->updateData($id, $request->all());
+
+        return response()->json(['success'=>'Catalogue updated successfully']);
     }
 
     /**
@@ -82,8 +131,10 @@ class CatelogController extends Controller
      * @param  \App\Catelog  $catelog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Catelog $catelog)
+    public function destroy($id)
     {
-        //
+        $this->Catelog->deleteData($id);
+
+        return response()->json(['success'=>'Catalogue deleted successfully']);
     }
 }

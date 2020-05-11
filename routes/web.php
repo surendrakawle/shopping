@@ -28,9 +28,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 Route::match(['get','post'],'/products/add-product','ProductController@addProduct')->name('products.add-product')->middleware('can:manage-users');
 Route::match(['get','post'],'/formDefination','FormDefinationController@index')->name('formDefination')->middleware('can:manage-users');
 Route::resource('category', 'CategoryController');
-Route::resource('catelogue', 'CatelogController');
+Route::resource('catalogue', 'CatelogController');
+Route::match(['get', 'post'], 'get-catalogues','CatelogController@getCatalogue')->name('get-catalogues');
 Route::resource('home', 'HomeController');
-// Route::match(['get','post'],'/','indexController@index');
 
 Route::get('/productdesc', function () {
     return view('product_desc');

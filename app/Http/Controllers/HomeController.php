@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Products;
 
 use Illuminate\Http\Request;
 
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $product=Products::all();
+        return view('home')->with('product',$product);
     }
 }
