@@ -383,7 +383,7 @@
                     @endcan
                     @can('manage-users')
                     <li>
-                        <a href="{{ route('products.add-product') }}">
+                        <a href="{{ route('product.index') }}">
                              <i class="material-icons">donut_large</i>
                              <span>Product</span>
                         </a>
@@ -690,8 +690,6 @@
     <!-- Bootstrap Core Js -->
     <script src="{{asset('frontEnd/plugins/bootstrap/js/bootstrap.js')}}"></script>
 
-    <!-- Select Plugin Js -->
-    <script src="{{asset('frontEnd/plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
 
     <!-- Slimscroll Plugin Js -->
     <script src="{{asset('frontEnd/plugins/jquery-slimscroll/jquery.slimscroll.js')}}"></script>

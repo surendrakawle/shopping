@@ -1,5 +1,122 @@
 @extends('layouts.app')
 
+@section('content')
+            <!-- Custom Content -->
+            <div class="row clearfix">
+                <div class="col-lg-6 col-md-6  col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Product
+                            </h2>
+                            <ul class=" btn btn-lg btn-primary header-dropdown m-r--5" id="addFormAction" data-form="PRODUCT">
+                               Add Product
+                            </ul>
+                        </div>
+                        <div class="body  table-responsive">
+                             <form  id="upload_image_form" action="javascript:void(0)" class="form-horizontal addForm"  enctype="multipart/form-data" method="POST">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6  col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Product List
+                            </h2>
+                        </div>
+                        <div class="body table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr class="btn-danger">
+                                        <th>#</th>
+                                        <th>FIRST NAME</th>
+                                        <th>LAST NAME</th>
+                                        <th>USERNAME</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>Larry</td>
+                                        <td>Jellybean</td>
+                                        <td>@lajelly</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">5</th>
+                                        <td>Larry</td>
+                                        <td>Kikat</td>
+                                        <td>@lakitkat</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+@endsection
+<!-- Jquery Core Js -->
+    <script src="{{asset('frontEnd/plugins/jquery/jquery.min.js')}}"></script>
+
+
+
+    <script type="text/javascript">
+
+    $(document).ready(function (e) {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+
+        $('#upload_image_form').submit(function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            console.log("");
+            $.ajax({
+                type:'POST',
+                url: "{{ route('products.add-product')}}",
+                data: formData,
+                cache:false,
+                contentType: false,
+                processData: false,
+                success: (data) => {
+                    this.reset();
+                    alert('Image has been uploaded successfully');
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+        });
+    });
+
+</script>
+@extends('layouts.app')
+
 @section('style')
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -14,10 +131,10 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Catelogue List
+                                Category List
                             </h2>
                             <button  class=" btn btn-lg btn-primary header-dropdown m-r--5" type="button"  data-toggle="modal" data-target="#CreateProductModal">
-                                Add Catelogue
+                                Add Category
                             </button>
 
                         </div>
@@ -26,6 +143,7 @@
                             <table class="table datatable">
                                 <thead>
                                     <tr class="btn-danger">
+                                        <th>CATEGORY NAME</th>
                                         <th>CATALOGUE NAME</th>
                                         <th>DESCRIPTION</th>
                                         <th>ACTION</th>
@@ -51,7 +169,7 @@
                     <div class="">
                         <div class="header">
                             <h2>
-                                ADD CATALOGUE
+                                ADD CATEGORY
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -63,10 +181,19 @@
 
                                 </div>
 
-                                <label for="catelogue_name">Name</label>
+                                <label for="categories_name">Name</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" id="catelogue_name" name="catelogue_name" class="form-control" placeholder="Enter your catalogue name">
+                                        <input type="text" id="categories_name" name="categories_name" class="form-control" placeholder="Enter your catalogue name">
+                                    </div>
+                                </div>
+                                <label for="catelogue_id">Catalogue</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <select class="form-control" id="catelogue_id" name="catelogue_id">
+                                            <option value="">-- Please select --</option>
+
+                                        </select>
                                     </div>
                                 </div>
                                 <label for="description">Description</label>
@@ -96,7 +223,7 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Product Edit</h4>
+                <h4 class="modal-title">Category Edit</h4>
                 <button type="button" class="close modelClose" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
@@ -121,7 +248,7 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Catalogue Delete</h4>
+                <h4 class="modal-title">Category Delete</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
@@ -141,6 +268,8 @@
 @section('script')
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+
 <script type="text/javascript">
     $(document).ready(function() {
         // init datatable.
@@ -151,9 +280,10 @@
             pageLength: 5,
             // scrollX: true,
             "order": [[ 0, "desc" ]],
-            ajax: '{{ route('get-catalogues') }}',
+            ajax: '{{ route('get-category') }}',
             columns: [
-               {data: 'catelogue_name', name: 'catelogue_name'},
+               {data: 'categories_name', name: 'categories_name'},
+               {data: 'catalogue', name: 'catalogue'},
                 {data: 'description', name: 'description'},
                {data: 'Actions', name: 'Actions',orderable:false,serachable:false,sClass:'text-center'},
             ]
@@ -168,10 +298,11 @@
                 }
             });
             $.ajax({
-                url: "{{ route('catalogue.store') }}",
+                url: "{{ route('category.store') }}",
                 method: 'post',
                 data: {
-                    catelogue_name: $('#catelogue_name').val(),
+                    categories_name: $('#categories_name').val(),
+                    catelogue_id: $('#catelogue_id').val(),
                     description: $('#description').val(),
                 },
                 success: function(result) {
@@ -187,7 +318,7 @@
                         $('#CreateProductModal').click();
                         $('.error').html('');
                         $('.datatable').DataTable().ajax.reload();
-                        $('#catelogue_name').val('');
+                        $('#categories_name').val('');
                         $('#description').val('');
                         showNotification('alert-success', result.success, 'top', 'center', 'animated zoomInDown', 'animated zoomOutDown');
 
@@ -208,7 +339,7 @@
             $('.alert-danger').hide();
             id = $(this).data('id');
             $.ajax({
-                url: "catalogue/"+id+"/edit",
+                url: "category/"+id+"/edit",
                 method: 'GET',
                 // data: {
                 //     id: id,
@@ -230,10 +361,11 @@
                 }
             });
             $.ajax({
-                url: "catalogue/"+id,
+                url: "category/"+id,
                 method: 'PUT',
                 data: {
-                    catelogue_name: $('#editcatelogue_name').val(),
+                    categories_name: $('#editcategories_name').val(),
+                    catelogue_id: $('#editcatelogue_id').val(),
                     description: $('#editDescription').val(),
                 },
                 success: function(result) {
@@ -249,7 +381,7 @@
                         $('#EditProductModal').hide();
                         $('.error').html('');
                         $('.datatable').DataTable().ajax.reload();
-                        $('#catelogue_name').val('');
+                        $('#categories_name').val('');
                         $('#description').val('');
                         showNotification('alert-success', result.success, 'top', 'center', 'animated zoomInDown', 'animated zoomOutDown');
 
@@ -273,7 +405,7 @@
                 }
             });
             $.ajax({
-                url: "catalogue/"+id,
+                url: "category/"+id,
                 method: 'DELETE',
                 success: function(result) {
                         $('#DeleteProductModal').click();
@@ -283,6 +415,22 @@
                 }
             });
         });
+
+       function Catalog(){
+            $.ajax({
+                url: "{{ route('get-catalogues') }}",
+                method: 'GET',
+                success: function(result) {
+                    // console.log(result);
+                    result.data.forEach(element => {
+                        // console.log(element);
+                        $('#catelogue_id').append('<option value="'+element.id+'">'+element.catelogue_name+'</option>');
+                    });
+
+                }
+            });
+       }
+       Catalog();
     });
 </script>
 @endsection

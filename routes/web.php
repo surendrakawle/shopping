@@ -25,12 +25,18 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 
     Route::resource('/users','UserController',['except'=>['show','create','store']]);
 });
-Route::match(['get','post'],'/products/add-product','ProductController@addProduct')->name('products.add-product')->middleware('can:manage-users');
 Route::match(['get','post'],'/formDefination','FormDefinationController@index')->name('formDefination')->middleware('can:manage-users');
-Route::resource('category', 'CategoryController');
+/* CATALOGUE ROUTE */
 Route::resource('catalogue', 'CatelogController');
 Route::match(['get', 'post'], 'get-catalogues','CatelogController@getCatalogue')->name('get-catalogues');
 Route::resource('home', 'HomeController');
+/* CATEGORY ROUTE */
+Route::resource('category', 'CategoryController');
+Route::match(['get', 'post'], 'get-category','CategoryController@getCategory')->name('get-category');
+/* PRODUCT ROUTE */
+Route::resource('product', 'ProductController');
+Route::match(['get', 'post'], 'get-product','ProductController@getProduct')->name('get-product');
+
 
 Route::get('/productdesc', function () {
     return view('product_desc');
