@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Products;
+use App\Category;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->Product = new Products;
+        $this->path ="admin/products/";
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,26 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view($this->path.'index');
+    }
+
+    public function getProduct(Request $request)
+    {
+        $data = $this->Product->getData();
+        return \DataTables::of($data)
+            ->addColumn('Actions', function($data) {
+                return '<button type="button" class="btn btn-success btn-sm" id="getEditProductData" data-id="'.$data->id.'">Edit</button>
+                    <button type="button" data-id="'.$data->id.'" data-toggle="modal" data-target="#DeleteProductModal" class="btn btn-danger btn-sm" id="getDeleteId">Delete</button>';
+            })
+            ->addColumn('catalogue',function($data){
+                $categories=Category::where("id",$data->categories_name)->get()->first();
+                if($categories)
+                return $categories->categories_name;
+                else
+                return "";
+            })
+            ->rawColumns(['catalogue','Actions'])
+            ->make(true);
     }
 
     /**

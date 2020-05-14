@@ -76,6 +76,7 @@
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="{{route('/')}}">{{ config('app.name', 'Shoping Add') }}</a>
             </div>
+            
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
@@ -694,6 +695,12 @@
     <!-- Slimscroll Plugin Js -->
     <script src="{{asset('frontEnd/plugins/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
 
+    <!-- Jquery Validation Plugin Css -->
+    <script src="{{asset('frontEnd/plugins/jquery-validation/jquery.validate.js')}}"></script>
+
+    <!-- JQuery Steps Plugin Js -->
+    <script src="{{asset('frontEnd/plugins/jquery-steps/jquery.steps.js')}}"></script>
+
     <!-- Waves Effect Plugin Js -->
     <script src="{{asset('frontEnd/plugins/node-waves/waves.js')}}"></script>
 
@@ -709,6 +716,7 @@
 
     <!-- Custom Js -->
     <script src="{{asset('frontEnd/js/admin.js')}}"></script>
+    <script src="{{asset('frontEnd/js/pages/forms/form-wizard.js')}}"></script>
 
 
     <!-- Bootstrap Notify Plugin Js -->

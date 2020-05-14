@@ -54,8 +54,8 @@
                             <div class="row">
                                 @for ($i=0;$i<15;$i++)
 
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 prod">
-                                    <div class="thumbnail">
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 prod">
+                                    <div class="thumbnail" style="padding:15px!important">
                                         <img src="{{asset('frontEnd/images/tshirt.jpeg')}}">
                                         <div class="T - Shirttion">
 
@@ -70,8 +70,6 @@
                                                 <p class="item-price"><strike>$400.00</strike> <b>$369.00</b></p>
                                                 <a  class="btn btn-primary  waves-effect"><i class="material-icons">add_shopping_cart</i></a>
                                                 <a  class="btn btn-primary pull-right waves-effect"> <i class="material-icons">favorite</i></a>
-
-
                                         </div>
                                 </div>
                                 </div>

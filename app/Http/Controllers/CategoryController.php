@@ -11,7 +11,6 @@ class CategoryController extends Controller
     public function __construct()
     {
         $this->Category = new Category;
-
         $this->title = 'Category';
         $this->path = 'admin/category/';
     }

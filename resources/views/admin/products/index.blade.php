@@ -1,122 +1,5 @@
 @extends('layouts.app')
 
-@section('content')
-            <!-- Custom Content -->
-            <div class="row clearfix">
-                <div class="col-lg-6 col-md-6  col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Product
-                            </h2>
-                            <ul class=" btn btn-lg btn-primary header-dropdown m-r--5" id="addFormAction" data-form="PRODUCT">
-                               Add Product
-                            </ul>
-                        </div>
-                        <div class="body  table-responsive">
-                             <form  id="upload_image_form" action="javascript:void(0)" class="form-horizontal addForm"  enctype="multipart/form-data" method="POST">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6  col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Product List
-                            </h2>
-                        </div>
-                        <div class="body table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr class="btn-danger">
-                                        <th>#</th>
-                                        <th>FIRST NAME</th>
-                                        <th>LAST NAME</th>
-                                        <th>USERNAME</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>Larry</td>
-                                        <td>Jellybean</td>
-                                        <td>@lajelly</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>Larry</td>
-                                        <td>Kikat</td>
-                                        <td>@lakitkat</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-@endsection
-<!-- Jquery Core Js -->
-    <script src="{{asset('frontEnd/plugins/jquery/jquery.min.js')}}"></script>
-
-
-
-    <script type="text/javascript">
-
-    $(document).ready(function (e) {
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-
-
-        $('#upload_image_form').submit(function(e) {
-            e.preventDefault();
-            var formData = new FormData(this);
-            console.log("");
-            $.ajax({
-                type:'POST',
-                url: "{{ route('products.add-product')}}",
-                data: formData,
-                cache:false,
-                contentType: false,
-                processData: false,
-                success: (data) => {
-                    this.reset();
-                    alert('Image has been uploaded successfully');
-                },
-                error: function(data){
-                    console.log(data);
-                }
-            });
-        });
-    });
-
-</script>
-@extends('layouts.app')
-
 @section('style')
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -131,10 +14,10 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Category List
+                                Product List
                             </h2>
                             <button  class=" btn btn-lg btn-primary header-dropdown m-r--5" type="button"  data-toggle="modal" data-target="#CreateProductModal">
-                                Add Category
+                                Add Product
                             </button>
 
                         </div>
@@ -143,7 +26,7 @@
                             <table class="table datatable">
                                 <thead>
                                     <tr class="btn-danger">
-                                        <th>CATEGORY NAME</th>
+                                        <th>Product NAME</th>
                                         <th>CATALOGUE NAME</th>
                                         <th>DESCRIPTION</th>
                                         <th>ACTION</th>
@@ -169,42 +52,107 @@
                     <div class="">
                         <div class="header">
                             <h2>
-                                ADD CATEGORY
+                                ADD Product
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </ul>
                         </div>
                         <div class="body">
-                            <form>
-                                <div class="form-group error">
+                            <div class="form-group error">
 
-                                </div>
+                            </div>
+                            <form id="wizard_with_validation">
+                                <h3>FIRST</h3>
+                                <fieldset>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="name" id="name" required>
+                                            <label class="form-label">Product Name*</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="code" id="code" >
+                                            <label class="form-label">Code</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="brand_name" id="brand_name" >
+                                            <label class="form-label">Brand Name</label>
+                                        </div>
+                                    </div>
+                                    <label class="form-label">Category Name*</label>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <select class="form-control" id="categories_name" name="categories_name" required>
+                                                <option value="1">-- Please select --</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </fieldset>
 
-                                <label for="categories_name">Name</label>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" id="categories_name" name="categories_name" class="form-control" placeholder="Enter your catalogue name">
+                                <h3>SECOUND</h3>
+                                <fieldset>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" name="color" id="color" class="form-control" >
+                                            <label class="form-label">Color</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <label for="catelogue_id">Catalogue</label>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <select class="form-control" id="catelogue_id" name="catelogue_id">
-                                            <option value="">-- Please select --</option>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="number" name="price" id="price" class="form-control" required>
+                                            <label class="form-label">Price*</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="number" name="discount" id="discount" class="form-control" required>
+                                            <label class="form-label">Discount*</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input  type="text" name="size" id="size" class="form-control" >
+                                            <label class="form-label">Size*</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <textarea name="desc" name="desc" cols="30" rows="3" class="form-control no-resize" required></textarea>
+                                            <label class="form-label">Description*</label>
+                                        </div>
+                                    </div>
+                                    
+                                </fieldset>
 
-                                        </select>
+                                <h3>FINAL</h3>
+                                <fieldset>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" name="unit" id="unit" class="form-control" required>
+                                            <label class="form-label">Unit*</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <label for="description">Description</label>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" id="description" name="description" class="form-control" placeholder="Enter your description">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input  type="number" name="quantity" id="quantity" class="form-control" >
+                                            <label class="form-label">Quantity</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <br>
-                                <button type="button" class="btn btn-success m-t-15 waves-effect" id="SubmitCreateProductForm">Add</button>
-                                <button type="button" class="btn btn-danger m-t-15 waves-effect" data-dismiss="modal">Close</button>
+                                    
+                                    <label class="form-label">Images*</label>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                                    <input name="images" id="images" type="file" multiple  required/>
+                                        </div>
+                                    </div>
+                                    <input id="acceptTerms-2" name="acceptTerms" type="checkbox" required checked>
+                                    <label for="acceptTerms-2">Product in stock.</label>
+                                </fieldset>
+                                <button type="button" class="btn btn-danger m-t-15 waves-effect" id="SubmitCreateProductForm" style="display:none">Add</button>
                             </form>
                         </div>
                     </div>
@@ -223,7 +171,7 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Category Edit</h4>
+                <h4 class="modal-title">Product Edit</h4>
                 <button type="button" class="close modelClose" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
@@ -248,7 +196,7 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Category Delete</h4>
+                <h4 class="modal-title">product Delete</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
@@ -270,6 +218,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 
 
+
 <script type="text/javascript">
     $(document).ready(function() {
         // init datatable.
@@ -280,11 +229,11 @@
             pageLength: 5,
             // scrollX: true,
             "order": [[ 0, "desc" ]],
-            ajax: '{{ route('get-category') }}',
+            ajax: '{{ route('get-product') }}',
             columns: [
-               {data: 'categories_name', name: 'categories_name'},
-               {data: 'catalogue', name: 'catalogue'},
-                {data: 'description', name: 'description'},
+               {data: 'name', name: 'name'},
+               {data: 'price', name: 'price'},
+                {data: 'images', name: 'images'},
                {data: 'Actions', name: 'Actions',orderable:false,serachable:false,sClass:'text-center'},
             ]
         });
@@ -292,13 +241,15 @@
         // Create product Ajax request.
         $('#SubmitCreateProductForm').click(function(e) {
             e.preventDefault();
+            alert();
+            return false;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
             $.ajax({
-                url: "{{ route('category.store') }}",
+                url: "{{ route('product.store') }}",
                 method: 'post',
                 data: {
                     categories_name: $('#categories_name').val(),
@@ -339,7 +290,7 @@
             $('.alert-danger').hide();
             id = $(this).data('id');
             $.ajax({
-                url: "category/"+id+"/edit",
+                url: "product/"+id+"/edit",
                 method: 'GET',
                 // data: {
                 //     id: id,
@@ -361,7 +312,7 @@
                 }
             });
             $.ajax({
-                url: "category/"+id,
+                url: "product/"+id,
                 method: 'PUT',
                 data: {
                     categories_name: $('#editcategories_name').val(),
@@ -405,7 +356,7 @@
                 }
             });
             $.ajax({
-                url: "category/"+id,
+                url: "product/"+id,
                 method: 'DELETE',
                 success: function(result) {
                         $('#DeleteProductModal').click();
