@@ -60,7 +60,31 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = \Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+        $img=array();
+        foreach($request->file('images') as $file)
+        {
+            $img_temp  =$file; //$request['image'];
+            $extension = $img_temp->getClientOriginalExtension();
+            $filename  = rand(111,99999).'.'.$extension;
+            $image_path = "frontEnd/uploads/".$filename;
+
+            //image resize
+            move_uploaded_file($img_temp, $image_path);
+            $img[]=$image_path;
+            // Image::make($img_temp)->resize(400,400)->save($image_path);
+
+        }
+        $request->images=json_encode($img);
+        $this->Product->storeData($request->all());
+
+        // return response()->json(['success'=>'Product added successfully']);
     }
 
     /**
@@ -105,6 +129,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->Product->deleteData($id);
+        return response()->json(['success'=>'Product deleted successfully']);
+   
     }
 }

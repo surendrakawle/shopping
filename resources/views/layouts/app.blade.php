@@ -33,6 +33,30 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{asset('frontEnd/css/themes/all-themes.css')}}" rel="stylesheet" />
+    <style>
+        @font-face {
+            font-family: brand-font;
+            src: url({{asset('frontEnd/font/Cream-Cake.ttf')}});
+        }
+        @font-face {
+            font-family: product-text-font;
+            src: url({{asset('frontEnd/font/Jacky-Shake.otf')}});
+        }
+        @if($category ?? "")
+        body{
+            background-image: url("{{asset('frontEnd/images/image-gallery/uphar.jpg')}}");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        @endif
+        .login-img{
+            background-image: url("{{asset('frontEnd/images/image-gallery/login.jpg')}}");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
     @yield('style')
 </head>
 
@@ -62,7 +86,7 @@
         <div class="search-icon">
             <i class="material-icons">search</i>
         </div>
-        <input type="text" placeholder="START TYPING...">
+        <input type="text" placeholder="START TYPING..." style="background-color: #f6f5f999;">
         <div class="close-search">
             <i class="material-icons">close</i>
         </div>
@@ -71,127 +95,19 @@
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
+
             <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="{{route('/')}}">{{ config('app.name', 'Shoping Add') }}</a>
-            </div>
-            
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
+                <center>
+                <a class="navbar-brand brand-name"   href="{{route('/')}}">{{ config('app.name', 'Shoping Add') }}</a>
+            </center>
+
+            <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
                     <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                     <li><a href="{{ route('wishlist')}}"  ><i class="material-icons">favorite</i></a></li>
                     <!-- #END# Call Search -->
-                    <!-- Notification -->
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            <i class="material-icons">notifications</i>
-                            <span class="label-count">9</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">NOTIFICATIONS</li>
-                            <li class="body">
-                                <ul class="menu">
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-light-green">
-                                                <i class="material-icons">person_add</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4>12 new members joined</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 14 mins ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-cyan">
-                                                <i class="material-icons">add_shopping_cart</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4>4 sales made</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 22 mins ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-red">
-                                                <i class="material-icons">delete_forever</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>Nancy Doe</b> deleted account</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 3 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-orange">
-                                                <i class="material-icons">mode_edit</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>Nancy</b> changed name</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 2 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-blue-grey">
-                                                <i class="material-icons">comment</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>John</b> commented your post</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 4 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-light-green">
-                                                <i class="material-icons">cached</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>John</b> updated status</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 3 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-purple">
-                                                <i class="material-icons">settings</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4>Settings updated</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> Yesterday
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="javascript:void(0);">View All Notification</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- #END# Tasks -->
+
 
                     <!-- Notifications -->
                     <li class="dropdown">
@@ -301,21 +217,79 @@
                             </li>
                         </ul>
                     </li>
+                    @can('admin-users')
                     <!-- #END# Notifications -->
                     <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+                    @endcan
                 </ul>
             </div>
         </div>
+
     </nav>
+
+    @if($category ?? "")
+    <nav class="navbar brand-catalog">
+        <div class="container-fluid">
+            <div class=" table-responsive" style="border: none!important;">
+                <center>
+            <ol class="breadcrumb   m-t-0" style="font-size:14px;width:1200px;overflow:hidden;">
+                <li>
+                    <a href="/">
+                        <i class="material-icons">home</i>
+                    </a>
+                </li>
+                @foreach($category_1 as $key=>$value)
+                <li>
+                    <a href="#collapsenav{{$key}}" class="font-bold" role="button" data-toggle="collapse"  aria-expanded="false"
+                    aria-controls="collapseExample">
+                        {{ $value->catelogue_name }}
+                    </a>
+                    <i class="material-icons">arrow_drop_down</i>
+                </li>
+                @endforeach
+            </ol>
+                </center>
+            </div>
+
+        </div>
+        @foreach($category_1 as $key=>$value)
+        <div class="collapse" id="collapsenav{{$key}}">
+            <div class="well" style="background-color:#f5f5f508!important;border: none!important;">
+                <div class="body product_view">
+                    <div class="row">
+                        @if($category??"")
+                        @foreach ($category as $key=>$value)
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 prod">
+                            <div class="thumbnail" style="padding:10px!important">
+                                <img src="{{asset('frontEnd/images/tshirt.jpeg')}}" >
+                                <div class="T-Shirttion product-text">
+                                    Cat {{ $key }}
+                                </div>
+
+                            </div>
+                        </div>
+                        @endforeach
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        </nav>
+        @endif
+
     <!-- #Top Bar -->
     <section>
         <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
+        <aside id="leftsidebar" class="sidebar" style="z-index: 12!important;">
+            @can('admin-users')
             <!-- User Info -->
             <div class="user-info">
+
                 <div class="image">
                     <img src="{{asset('frontEnd/images/user.png')}}" width="48" height="48" alt="User" />
                 </div>
+
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     @can('manage-users')
@@ -362,6 +336,7 @@
                 </div>
             </div>
             <!-- #User Info -->
+            @endcan
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
@@ -373,7 +348,14 @@
                                          <span>Home</span>
                                     </a>
                     </li>
-
+                    @if(!Auth::user())
+                    <li class="active">
+                                    <a href="{{ route('login') }}">
+                                         <i class="material-icons">input</i>
+                                         <span>Login</span>
+                                    </a>
+                    </li>
+                   @endif
                          @can('admin-users')
                     <li>
                                     <a href="{{ route('admin.users.index') }}">
@@ -383,10 +365,12 @@
                     </li>
                     @endcan
                     @can('manage-users')
-                    <li>
-                        <a href="{{ route('product.index') }}">
-                             <i class="material-icons">donut_large</i>
-                             <span>Product</span>
+
+
+                    <li class="">
+                        <a href="{{ url('/catalogue') }}">
+                             <i class="material-icons">device_hub</i>
+                             <span>Catelogue</span>
                         </a>
                     </li>
                     <li class="">
@@ -395,10 +379,10 @@
                              <span>Category</span>
                         </a>
                     </li>
-                    <li class="">
-                        <a href="{{ url('/catalogue') }}">
-                             <i class="material-icons">device_hub</i>
-                             <span>Catelogue</span>
+                    <li>
+                        <a href="{{ route('product.index') }}">
+                             <i class="material-icons">donut_large</i>
+                             <span>Product</span>
                         </a>
                     </li>
                     <li class="">
@@ -421,12 +405,12 @@
                     </li>
 
                      @endcan
-                     <li class="">
+                     {{-- <li class="">
                         <a href="{{ route('order') }}">
                              <i class="material-icons">add_shopping_cart</i>
                              <span>Cart</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="">
                         <a href="{{ route('profile') }}">
                              <i class="material-icons">person</i>
@@ -608,7 +592,41 @@
     </section>
 
     <section class="content" >
-        <div class="container-fluid">
+        @if($slider??'')
+        <div class="row clearfix top-slider"
+
+            <!-- With T - Shirttions -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-0" >
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner " role="listbox">
+                                    <div class="item active">
+                                        <img src="{{asset('frontEnd/images/image-gallery/1919.jpg')}}"  class="slider_img" />
+
+                                    </div>
+                                    <div class="item">
+                                        <img src="{{asset('frontEnd/images/image-gallery/1919.jpg')}}" class="slider_img" />
+
+                                    </div>
+                                    <div class="item">
+                                        <img src="{{asset('frontEnd/images/image-gallery/1919.jpg')}}"  class="slider_img" />
+
+                                    </div>
+                                </div>
+                                <!-- Controls -->
+
+                            </div>
+                        </div>
+
+                <!-- #END# With T - Shirttions -->
+
+            </div>
+            @endif
              @yield('content')
         </div>
     </section>
@@ -621,12 +639,12 @@
 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-0" >
                     <div class="card" style="margin-bottom:0px!important;">
-                        <div class="body bg-blue-grey">
+                        <div class="body bg-black">
                             <div class="row">
 
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                    <div class="card">
-                                        <div class="body bg-blue-grey">
+                                    <div class="">
+                                        <div class="">
                                            <ul class="footer_ul">
                                                 <li>Contact Us</li>
                                                 <li>About Us</li>
@@ -637,8 +655,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                    <div class="card">
-                                        <div class="body bg-blue-grey">
+                                    <div class="">
+                                        <div class="">
                                             <ul class="footer_ul">
                                                 <li>Return Policy</li>
                                                 <li>Terms of Use </li>
@@ -649,8 +667,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                    <div class="card">
-                                        <div class="body bg-blue-grey">
+                                    <div class="">
+                                        <div class="">
                                            <ul class="footer_ul">
                                                 <li>Facebook</li>
                                                 <li>Twitter </li>
@@ -661,8 +679,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                    <div class="card">
-                                        <div class="body bg-blue-grey">
+                                    <div class="">
+                                        <div class="">
                                         <ul class="footer_ul">
                                                 <li> Shop No. 09  C-21 MALL, </li>
                                                 <li>BHAYANDAR WEST ,</li>

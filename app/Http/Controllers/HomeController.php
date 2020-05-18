@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Products;
+use App\Category;
+use App\Catelog;
 
 use Illuminate\Http\Request;
 
@@ -25,6 +27,14 @@ class HomeController extends Controller
     public function index()
     {
         $product=Products::all();
-        return view('home')->with('product',$product);
+        $category=Category::all();
+        $category_1=Catelog::all();
+        $slider=Catelog::all();
+        return view('home')->with([
+            'product'=>$product,
+            'category_1'=>$category_1,
+            'category'=>$category,
+            'slider'=>$slider,
+            ]);
     }
 }

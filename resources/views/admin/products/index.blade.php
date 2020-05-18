@@ -28,7 +28,7 @@
                                     <tr class="btn-danger">
                                         <th>Product NAME</th>
                                         <th>CATALOGUE NAME</th>
-                                        <th>DESCRIPTION</th>
+                                        <th>descriptionRIPTION</th>
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
@@ -62,7 +62,9 @@
                             <div class="form-group error">
 
                             </div>
-                            <form id="wizard_with_validation">
+                            <form id="wizard_with_validation" method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            
                                 <h3>FIRST</h3>
                                 <fieldset>
                                     <div class="form-group form-float">
@@ -121,8 +123,8 @@
                                     </div>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <textarea name="desc" name="desc" cols="30" rows="3" class="form-control no-resize" required></textarea>
-                                            <label class="form-label">Description*</label>
+                                            <textarea name="description" name="description" cols="30" rows="3" class="form-control no-resize" required></textarea>
+                                            <label class="form-label">descriptionription*</label>
                                         </div>
                                     </div>
                                     
@@ -146,13 +148,15 @@
                                     <label class="form-label">Images*</label>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                                    <input name="images" id="images" type="file" multiple  required/>
+                                                    <input name="images[]" id="images" type="file" multiple  required/>
                                         </div>
                                     </div>
-                                    <input id="acceptTerms-2" name="acceptTerms" type="checkbox" required checked>
-                                    <label for="acceptTerms-2">Product in stock.</label>
+                                    <input id="acceptTerms-2" name="stock" type="checkbox" required checked>
+                                    <label for="acceptTerms-2">Product in stock.</label><br>
+                                    <input id="acceptTerms-2" name="home_page" type="checkbox">
+                                    <label for="acceptTerms-2">Show in home page.</label>
                                 </fieldset>
-                                <button type="button" class="btn btn-danger m-t-15 waves-effect" id="SubmitCreateProductForm" style="display:none">Add</button>
+                                <button type="submit" class="btn btn-danger m-t-15 waves-effect" id="SubmitCreateProductForm" style="display:none">Add</button>
                             </form>
                         </div>
                     </div>
@@ -228,7 +232,7 @@
             autoWidth: false,
             pageLength: 5,
             // scrollX: true,
-            "order": [[ 0, "desc" ]],
+            "order": [[ 0, "description" ]],
             ajax: '{{ route('get-product') }}',
             columns: [
                {data: 'name', name: 'name'},
@@ -238,10 +242,9 @@
             ]
         });
 
-        // Create product Ajax request.
+       /* // Create product Ajax request.
         $('#SubmitCreateProductForm').click(function(e) {
-            e.preventDefault();
-            alert();
+            // e.preventDefault();
             return false;
             $.ajaxSetup({
                 headers: {
@@ -252,9 +255,20 @@
                 url: "{{ route('product.store') }}",
                 method: 'post',
                 data: {
-                    categories_name: $('#categories_name').val(),
-                    catelogue_id: $('#catelogue_id').val(),
-                    description: $('#description').val(),
+                     name: $('#name').val(),
+                     code: $('#code').val(),
+                     description: $('#description').val(),
+                     color: $('#color').val(),
+                     price: $('#price').val(),
+                     images: $('#images').val(),
+                     categories_name: $('#categories_name').val(),
+                     size: $('#size').val(),
+                     unit: $('#unit').val(),
+                     stock: $('#stock').val(),
+                     brand_name: $('#brand_name').val(),
+                     quantity: $('#quantity').val(),
+                     discount: $('#discount').val(),
+                     home_page: $('#home_page').val(),
                 },
                 success: function(result) {
                     if(result.errors) {
@@ -270,14 +284,14 @@
                         $('.error').html('');
                         $('.datatable').DataTable().ajax.reload();
                         $('#categories_name').val('');
-                        $('#description').val('');
+                        $('#descriptionription').val('');
                         showNotification('alert-success', result.success, 'top', 'center', 'animated zoomInDown', 'animated zoomOutDown');
 
 
                     }
                 }
             });
-        });
+        });*/
 
         // Get single product in EditModel
         $('.modelClose').on('click', function(){
@@ -317,7 +331,7 @@
                 data: {
                     categories_name: $('#editcategories_name').val(),
                     catelogue_id: $('#editcatelogue_id').val(),
-                    description: $('#editDescription').val(),
+                    descriptionription: $('#editdescriptionription').val(),
                 },
                 success: function(result) {
                     if(result.errors) {
@@ -333,7 +347,7 @@
                         $('.error').html('');
                         $('.datatable').DataTable().ajax.reload();
                         $('#categories_name').val('');
-                        $('#description').val('');
+                        $('#descriptionription').val('');
                         showNotification('alert-success', result.success, 'top', 'center', 'animated zoomInDown', 'animated zoomOutDown');
 
 
