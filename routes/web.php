@@ -17,7 +17,7 @@ Route::get('/profile', function () {
     return view('welcome');
 })->name('profile');
 Route::get('/', 'HomeController@index')->name('/');
-
+Route::match(['get', 'post'], '/product_filter', function () { return view('product_filter')->with('sidebar','true');});
 Auth::routes();
 
 
@@ -37,6 +37,7 @@ Route::match(['get', 'post'], 'get-category','CategoryController@getCategory')->
 Route::resource('product', 'ProductController');
 Route::match(['get', 'post'], 'get-product','ProductController@getProduct')->name('get-product');
 
+Route::resource('contact', 'ContactController');
 
 Route::get('/productdesc', function () {
     return view('product_desc');
@@ -46,3 +47,14 @@ Route::get('/order', function () {
 })->name('order');
 Route::get('/wishlist', function () {return view('wishlist');})->name('wishlist');
 Route::get('/faq',function (){ return view('faq'); })->name('faq');
+
+///google login
+Route::get('/redirect','SocialAuthGoogleController@redirect');
+Route::get('/callback','SocialAuthGoogleController@callback');
+
+///paytm integration
+Route::get('/payment','PaytmController@pay');
+Route::post('/payment/status', 'PaytmController@paymentCallback');
+
+Route::get('/login/{social}','Auth\LoginController@socialLogin')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
+Route::get('/login/{social}/callback','Auth\LoginController@handleProviderCallback')->where('social','twitter|facebook|linkedin|google|github|bitbucket');

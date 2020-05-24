@@ -29,5 +29,27 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'facebook' => [
+
+        'client_id' => '446093505986416', //Facebook API
+
+        'client_secret' => 'f768c1228d55f6e20bc6e733e5b5eae9', //Facebook Secret
+
+        'redirect' => 'http://laravel.localhost/login/facebook/callback',
+
+     ],
+     'google' => [
+        'client_id' => '73315586382-30p62vpve4slnu71qnt75lv69u2u03ht.apps.googleusercontent.com', //Facebook API
+        'client_secret' => '_iBk8ZkIelkpMviPPV0mDHUC', //Facebook Secret
+        'redirect' => 'http://127.0.0.1:8000/callback',
+     ],
+     'paytm-wallet' => [
+        'env' => env('PAYTM_ENVIRONMENT'), // values : (local | production)
+        'merchant_id' => env('PAYTM_MERCHANT_ID'),
+        'merchant_key' => env('PAYTM_MERCHANT_KEY'),
+        'merchant_website' => env('PAYTM_MERCHANT_WEBSITE'),
+        'channel' => env('PAYTM_CHANNEL'),
+        'industry_type' => env('PAYTM_INDUSTRY_TYPE'),
+],
 
 ];

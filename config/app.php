@@ -178,6 +178,12 @@ return [
         //image
         Intervention\Image\ImageServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        //socialite
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        //avatar make
+        Laravolt\Avatar\ServiceProvider::class,
+        //paytm gayteway
+        Anand\LaravelPaytmWallet\PaytmWalletServiceProvider::class,
 
     ],
 
@@ -232,6 +238,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Avatar'    => Laravolt\Avatar\Facade::class,
+        'PaytmWallet' => Anand\LaravelPaytmWallet\Facades\PaytmWallet::class,
 
     ],
 

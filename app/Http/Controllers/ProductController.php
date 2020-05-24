@@ -38,7 +38,11 @@ class ProductController extends Controller
                 else
                 return "";
             })
-            ->rawColumns(['catalogue','Actions'])
+            ->addColumn('image',function($data){
+                $image=json_decode($data->images);
+                return "<img src='".$image[0]."' alt='image' width='70px' height='70px'>";
+            })
+            ->rawColumns(['image','catalogue','Actions'])
             ->make(true);
     }
 
@@ -60,6 +64,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $validator = \Validator::make($request->all(), [
             'name' => 'required',
             'price' => 'required',
@@ -68,22 +73,59 @@ class ProductController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
         $img=array();
-        foreach($request->file('images') as $file)
+        $product =new  Products;
+        if($request->hasFile('images'))
         {
-            $img_temp  =$file; //$request['image'];
-            $extension = $img_temp->getClientOriginalExtension();
-            $filename  = rand(111,99999).'.'.$extension;
-            $image_path = "frontEnd/uploads/".$filename;
+            $img=array();
+            foreach($request->file('images') as $file)
+            {
+                $img_temp  =$file; //$request['image'];
+                $extension = $img_temp->getClientOriginalExtension();
+                $filename  = rand(111,99999).'.'.$extension;
+                $image_path = "uploads/product/".$filename;
 
-            //image resize
-            move_uploaded_file($img_temp, $image_path);
-            $img[]=$image_path;
-            // Image::make($img_temp)->resize(400,400)->save($image_path);
+                //image resize
+                move_uploaded_file($img_temp, $image_path);
+                $img[]=$image_path;
+                // Image::make($img_temp)->resize(400,400)->save($image_path);
 
+            }
+         $product->images=json_encode($img);
         }
-        $request->images=json_encode($img);
-        $this->Product->storeData($request->all());
-
+        if(isset($request->name))
+        $product->name=$request->name;
+        if(isset($request->code))
+        $product->code=$request->code;
+        if(isset($request->description))
+        $product->description=$request->description;
+        if(isset($request->color))
+        $product->color=$request->color;
+        if(isset($request->price))
+        $product->price=$request->price;
+        if(isset($request->status))
+        $product->status=$request->status;
+        if(isset($request->unit))
+        $product->unit=$request->unit;
+        if(isset($request->size))
+        $product->size=$request->size;
+        if(isset($request->categories_name))
+        $product->categories_name=$request->categories_name;
+        if(isset($request->stock))
+        $product->stock=$request->stock;
+        if(isset($request->brand_name))
+        $product->brand_name=$request->brand_name;
+        if(isset($request->quantity))
+        $product->quantity=$request->quantity;
+        if(isset($request->discount))
+        $product->discount=$request->discount;
+        if(isset($request->purchase_price))
+        $product->purchase_price=$request->purchase_price;
+        if(isset($request->home_page))
+        $product->home_page=$request->home_page;
+        $product->save();
+        // $request->images=json_encode($img);
+        // $this->Product->storeData($request->all());
+        return redirect()->back();
         // return response()->json(['success'=>'Product added successfully']);
     }
 
@@ -131,6 +173,6 @@ class ProductController extends Controller
     {
         $this->Product->deleteData($id);
         return response()->json(['success'=>'Product deleted successfully']);
-   
+
     }
 }

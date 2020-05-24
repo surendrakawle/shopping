@@ -1,4 +1,9 @@
-/* navbar menu  */
+/* footer a tag underline remove   */
+
+.footer_ul>li>a {
+    text-decoration: none;
+    color: white;
+}
 
 
 /* product text  */

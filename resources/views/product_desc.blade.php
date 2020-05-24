@@ -11,16 +11,16 @@
                         <div class="header">
                             <a href="{{route('order')}}" class="btn btn-primary waves-effect pull-right " role="button" >  Custom T - Shirt </a>
                             <h2>
-                               T - Shirt 
+                               T - Shirt
                             </h2>
-                            
+
 
                         </div>
                         <div class="body  table-responsive">
                             <div class="row clearfix">
                                 <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                                     <div class="card">
-                                       
+
                                         <div class="body">
                                             <div id="aniimated-thumbnials" class="list-unstyled row clearfix">
                                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -52,14 +52,14 @@
                                 </div>
                                 <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
                                     <div class="header">
-                                                <a href="{{route('order')}}" class="btn btn-primary waves-effect pull-right " role="button" >  Buy Now </a>
+                                                <a href="{{url('payment')}}" class="btn btn-primary waves-effect pull-right " role="button" >  Buy Now </a>
                                             <b>
                                                 <h2>
                                                     Printed T-Shirt
                                                 </h2>
                                             </b>
-                                               
-                    
+
+
                                             </div>
                                             <div class="row clearfix">
                                                 <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
@@ -95,7 +95,7 @@
                                                             <div id="collapseTwo_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_1">
                                                                 <div class="panel-body">
                                                                     <div class="col-md-12">
-                                                                        
+
                                                                         <div class="input-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" class="form-control" placeholder="Enter delivery pin code">
@@ -152,12 +152,12 @@
                                                                         <label for="md_checkbox_4">XL</label>
                                                                         <input type="checkbox" id="md_checkbox_51" class="chk-col-red"  />
                                                                         <label for="md_checkbox_5">XLL</label>
-                                                                       
-                                
+
+
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                       
+
                                                 </div>
                                     </div>
                                 </div>
@@ -168,4 +168,4 @@
             </div>
 
 @endsection
- 
+

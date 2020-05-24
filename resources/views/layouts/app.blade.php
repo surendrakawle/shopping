@@ -42,14 +42,7 @@
             font-family: product-text-font;
             src: url({{asset('frontEnd/font/Jacky-Shake.otf')}});
         }
-        @if($category ?? "")
-        body{
-            background-image: url("{{asset('frontEnd/images/image-gallery/uphar.jpg')}}");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        @endif
+
         .login-img{
             background-image: url("{{asset('frontEnd/images/image-gallery/login.jpg')}}");
             background-position: center;
@@ -57,7 +50,17 @@
             background-size: cover;
         }
     </style>
-    @yield('style')
+    @yield('style');
+    @if($category ?? "")
+    <style>
+    body{
+        background-image: url("{{asset('frontEnd/images/image-gallery/uphar.jpg')}}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    </style>
+     @endif
 </head>
 
 <body class="theme-red ">
@@ -239,7 +242,7 @@
                     </a>
                 </li>
                 @foreach($category_1 as $key=>$value)
-                <li>
+                <li onclick="listShow(this)">
                     <a href="#collapsenav{{$key}}" class="font-bold" role="button" data-toggle="collapse"  aria-expanded="false"
                     aria-controls="collapseExample">
                         {{ $value->catelogue_name }}
@@ -253,20 +256,20 @@
 
         </div>
         @foreach($category_1 as $key=>$value)
-        <div class="collapse" id="collapsenav{{$key}}">
+        <div class="collapse list_show" id="collapsenav{{$key}}">
             <div class="well" style="background-color:#f5f5f508!important;border: none!important;">
                 <div class="body product_view">
                     <div class="row">
                         @if($category??"")
                         @foreach ($category as $key=>$value)
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 prod">
-                            <div class="thumbnail" style="padding:10px!important">
+                            <a href="{{url('product_filter')}}" class="thumbnail" style="padding:10px!important">
                                 <img src="{{asset('frontEnd/images/tshirt.jpeg')}}" >
                                 <div class="T-Shirttion product-text">
                                     Cat {{ $key }}
                                 </div>
 
-                            </div>
+                            </a>
                         </div>
                         @endforeach
                         @endif
@@ -281,6 +284,7 @@
     <!-- #Top Bar -->
     <section>
         <!-- Left Sidebar -->
+        @if(!isset($sidebar))
         <aside id="leftsidebar" class="sidebar" style="z-index: 12!important;">
             @can('admin-users')
             <!-- User Info -->
@@ -348,6 +352,29 @@
                                          <span>Home</span>
                                     </a>
                     </li>
+                    @if($category??'')
+                    @foreach ($category_1 as $key=>$value)
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">store</i>
+                            <span>{{ $value->catelogue_name }}</span>
+                        </a>
+                        @if($category_1??"")
+                        <ul class="ml-menu">
+                        @foreach($category as $key_1=>$value_2)
+                            @if($value->id==$value_2->catelogue_id)
+                            <li>
+                                <a href="{{url('product_filter')}}">
+                                    <span>{{ $value_2->categories_name }}</span>
+                                </a>
+                            </li>
+                            @endif
+                        @endforeach
+                        </ul>
+                        @endif
+                    </li>
+                    @endforeach
+                    @endif
                     @if(!Auth::user())
                     <li class="active">
                                     <a href="{{ route('login') }}">
@@ -420,7 +447,7 @@
 
 
                     <li class="">
-                        <a href="{{ route('/') }}">
+                        <a href="{{ route('contact.index') }}">
                              <i class="material-icons">phone</i>
                              <span>Contact Us</span>
                         </a>
@@ -431,6 +458,18 @@
                              <span>Help</span>
                         </a>
                     </li>
+                    @if(Auth::user())
+                    <li>
+                        <a href="{{ route('logout') }}"  onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                             <i class="material-icons">input</i>
+                                            <span>{{ __('Logout') }}</span>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                    </li>
+                    @endif
                 </ul>
             </div>
             <!-- #Menu -->
@@ -445,6 +484,7 @@
             </div>
             <!-- #Footer -->
         </aside>
+        @endif
         <!-- #END# Left Sidebar -->
         <!-- Right Sidebar -->
         <aside id="rightsidebar" class="right-sidebar">
@@ -642,11 +682,11 @@
                         <div class="body bg-black">
                             <div class="row">
 
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                                     <div class="">
                                         <div class="">
                                            <ul class="footer_ul">
-                                                <li>Contact Us</li>
+                                                <li><a href="{{ route('contact.index') }}">Contact Us</a></li>
                                                 <li>About Us</li>
                                                 <li>Help Center</li>
                                                 <li>FAQ</li>
@@ -654,7 +694,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                                     <div class="">
                                         <div class="">
                                             <ul class="footer_ul">
@@ -666,7 +706,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                                     <div class="">
                                         <div class="">
                                            <ul class="footer_ul">
@@ -678,7 +718,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                                     <div class="">
                                         <div class="">
                                         <ul class="footer_ul">
@@ -746,6 +786,14 @@
     <script src="{{asset('frontEnd/js/demo.js')}}"></script>
 
     <script src="{{asset('frontEnd/js/product.js')}}"></script>
+    <script>
+        function listShow(element){
+            $('.list_show').removeClass('in');
+        }
+        $("#carousel-example-generic").click(function(){
+            $('.list_show').removeClass('in');
+});
+    </script>
     @yield('script')
 </body>
 

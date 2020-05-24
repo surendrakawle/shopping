@@ -26,10 +26,12 @@
                             <table class="table datatable">
                                 <thead>
                                     <tr class="btn-danger">
-                                        <th>Product NAME</th>
-                                        <th>CATALOGUE NAME</th>
-                                        <th>descriptionRIPTION</th>
-                                        <th>ACTION</th>
+                                        <th>Product Name</th>
+                                        <th>Catagories </th>
+                                        <th>Images </th>
+                                        <th>Price </th>
+                                        <th>Description</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
 
@@ -64,7 +66,7 @@
                             </div>
                             <form id="wizard_with_validation" method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            
+
                                 <h3>FIRST</h3>
                                 <fieldset>
                                     <div class="form-group form-float">
@@ -124,10 +126,10 @@
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             <textarea name="description" name="description" cols="30" rows="3" class="form-control no-resize" required></textarea>
-                                            <label class="form-label">descriptionription*</label>
+                                            <label class="form-label">Description*</label>
                                         </div>
                                     </div>
-                                    
+
                                 </fieldset>
 
                                 <h3>FINAL</h3>
@@ -144,7 +146,7 @@
                                             <label class="form-label">Quantity</label>
                                         </div>
                                     </div>
-                                    
+
                                     <label class="form-label">Images*</label>
                                     <div class="form-group form-float">
                                         <div class="form-line">
@@ -236,8 +238,10 @@
             ajax: '{{ route('get-product') }}',
             columns: [
                {data: 'name', name: 'name'},
+               {data: 'catalogue', name: 'catalogue'},
+               {data: 'image', name: 'image'},
                {data: 'price', name: 'price'},
-                {data: 'images', name: 'images'},
+               {data: 'description', name: 'description'},
                {data: 'Actions', name: 'Actions',orderable:false,serachable:false,sClass:'text-center'},
             ]
         });
