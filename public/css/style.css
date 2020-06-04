@@ -24,7 +24,7 @@
 .login_brand {
     width: 106%;
     opacity: 0.7;
-    height: 318px;
+    height: 383px;
     background-color: #fbbb01;
 }
 
@@ -211,6 +211,9 @@ input {
     .carousel-inner {
         height: 450px;
     }
+    .sidebar-catalog {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -223,6 +226,9 @@ input {
     }
     .brand-catalog {
         display: none;
+    }
+    .sidebar-catalog {
+        display: block;
     }
     .top-slider {
         margin-top: -34px;

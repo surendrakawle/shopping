@@ -30,12 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'facebook' => [
-
-        'client_id' => '446093505986416', //Facebook API
-
-        'client_secret' => 'f768c1228d55f6e20bc6e733e5b5eae9', //Facebook Secret
-
-        'redirect' => 'http://laravel.localhost/login/facebook/callback',
+        'client_id' => '586822295281487', //Facebook API
+        'client_secret' => '7916cd7a51fef3d83f065d0f40ef3577', //Facebook Secret
+        'redirect' => 'http://127.0.0.1:8000/login/facebook/callback',
 
      ],
      'google' => [

@@ -17,11 +17,11 @@ class PaytmController extends Controller
         $payment = PaytmWallet::with('receive');
 
         $payment->prepare([
-            'order' => 23, // your order id taken from cart
+            'order' => rand(999,12000), // your order id taken from cart
           'user' => '1', // your user id
           'mobile_number' => 8329485255, // your customer mobile no
           'email' => 'surendrakawle99@gmail.com', // your user email address
-          'amount' => 10, // amount will be paid in INR.
+          'amount' => 1, // amount will be paid in INR.
           'callback_url' => 'http://127.0.0.1:8000/payment/status' // callback URL
         ]);
 

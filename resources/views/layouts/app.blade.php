@@ -242,7 +242,7 @@
                     </a>
                 </li>
                 @foreach($category_1 as $key=>$value)
-                <li onclick="listShow(this)">
+                <li onclick="listShow(this)" tar-data="collapsenav{{$key}}">
                     <a href="#collapsenav{{$key}}" class="font-bold" role="button" data-toggle="collapse"  aria-expanded="false"
                     aria-controls="collapseExample">
                         {{ $value->catelogue_name }}
@@ -259,13 +259,13 @@
         <div class="collapse list_show" id="collapsenav{{$key}}">
             <div class="well" style="background-color:#f5f5f508!important;border: none!important;">
                 <div class="body product_view">
-                    <div class="row">
+                    <div class="row cat-show card">
                         @if($category??"")
                         @foreach ($category as $key=>$value)
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 prod">
-                            <a href="{{url('product_filter')}}" class="thumbnail" style="padding:10px!important">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2  ">
+                            <a href="{{url('product_filter')}}" class="thumbnail" style="border:none!important;">
                                 <img src="{{asset('frontEnd/images/tshirt.jpeg')}}" >
-                                <div class="T-Shirttion product-text">
+                                <div class="T-Shirttion" style="padding:5px;">
                                     Cat {{ $key }}
                                 </div>
 
@@ -352,9 +352,17 @@
                                          <span>Home</span>
                                     </a>
                     </li>
+                    @if(!Auth::user())
+                    <li class="active">
+                                    <a href="{{ route('login') }}">
+                                         <i class="material-icons">input</i>
+                                         <span>Login</span>
+                                    </a>
+                    </li>
+                   @endif
                     @if($category??'')
                     @foreach ($category_1 as $key=>$value)
-                    <li>
+                    <li class="sidebar-catalog">
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">store</i>
                             <span>{{ $value->catelogue_name }}</span>
@@ -375,14 +383,7 @@
                     </li>
                     @endforeach
                     @endif
-                    @if(!Auth::user())
-                    <li class="active">
-                                    <a href="{{ route('login') }}">
-                                         <i class="material-icons">input</i>
-                                         <span>Login</span>
-                                    </a>
-                    </li>
-                   @endif
+
                          @can('admin-users')
                     <li>
                                     <a href="{{ route('admin.users.index') }}">
@@ -672,14 +673,21 @@
     </section>
 
 
-    <section class="content" style="margin-right:0px!important;margin-left:0px!important;">
+    <section class="content" style="margin-right:0px!important;margin-left:0px!important;background-color:#3e3e3e;">
         <div class="container-fluid">
             <!-- No Header Card -->
             <div class="row">
 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-0" >
                     <div class="card" style="margin-bottom:0px!important;">
-                        <div class="body bg-black">
+                        <div class="body " style="
+                        background-color: #3e3e3e;
+                        color:#fff;
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 700;
+                        font-size: 16px;
+                        letter-spacing: 1.4px;
+                    ">
                             <div class="row">
 
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
@@ -788,9 +796,15 @@
     <script src="{{asset('frontEnd/js/product.js')}}"></script>
     <script>
         function listShow(element){
+            $(element).toggleClass('in');
+           var selected= $(element).attr('tar-data');
+           $('#'.selected).removeClass('list_show');
             $('.list_show').removeClass('in');
+
+            $('#'.selected).addClass('list_show');
+
         }
-        $("#carousel-example-generic").click(function(){
+        $("body").click(function(){
             $('.list_show').removeClass('in');
 });
     </script>
