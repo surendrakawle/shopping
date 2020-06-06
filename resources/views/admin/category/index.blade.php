@@ -16,6 +16,7 @@
                             <h2>
                                 Category List
                             </h2>
+                            
                             <button  class=" btn btn-lg btn-primary header-dropdown m-r--5" type="button"  data-toggle="modal" data-target="#CreateProductModal">
                                 Add Category
                             </button>
@@ -59,7 +60,7 @@
                             </ul>
                         </div>
                         <div class="body">
-                            <form>
+                            <form id="SubmitCreateProductForm" method="POST" enctype="multipart/form-data" action="javascript:void(0)">
                                 <div class="form-group error">
 
                                 </div>
@@ -79,6 +80,12 @@
                                         </select>
                                     </div>
                                 </div>
+                                <label for="catelogue_id">Images</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                    <input type="file" name="image" id="image" placeholder="Choose image" >          
+                                    </div>
+                                </div>
                                 <label for="description">Description</label>
                                 <div class="form-group">
                                     <div class="form-line">
@@ -86,7 +93,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <button type="button" class="btn btn-success m-t-15 waves-effect" id="SubmitCreateProductForm">Add</button>
+                                <button type="submit" class="btn btn-success m-t-15 waves-effect" >Add</button>
                                 <button type="button" class="btn btn-danger m-t-15 waves-effect" data-dismiss="modal">Close</button>
                             </form>
                         </div>
@@ -104,6 +111,7 @@
 <div class="modal" id="EditProductModal">
     <div class="modal-dialog">
         <div class="modal-content">
+            <form id="SubmitEditProductForm" method="POST" enctype="multipart/form-data" action="javascript:void(0)">
             <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title">Category Edit</h4>
@@ -111,16 +119,16 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-
                 <div id="EditProductModalBody">
 
                 </div>
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="SubmitEditProductForm">Update</button>
+                <button type="submit" class="btn btn-success" >Update</button>
                 <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">Close</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -171,23 +179,24 @@
                {data: 'Actions', name: 'Actions',orderable:false,serachable:false,sClass:'text-center'},
             ]
         });
-
-        // Create product Ajax request.
-        $('#SubmitCreateProductForm').click(function(e) {
-            e.preventDefault();
-            $.ajaxSetup({
+        $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+        // Create product Ajax request.
+        $('#SubmitCreateProductForm').submit(function(e) {
+            e.preventDefault();
+           
+            var formData = new FormData(this);
+
             $.ajax({
                 url: "{{ route('category.store') }}",
                 method: 'post',
-                data: {
-                    categories_name: $('#categories_name').val(),
-                    catelogue_id: $('#catelogue_id').val(),
-                    description: $('#description').val(),
-                },
+                cache:false,
+                contentType: false,
+                processData: false,                   
+                data:formData,
                 success: function(result) {
                     if(result.errors) {
                         $('.error').html('');
@@ -234,23 +243,19 @@
                 }
             });
         });
-
+       
         // Update product Ajax request.
-        $('#SubmitEditProductForm').click(function(e) {
+        $('#SubmitEditProductForm').submit(function(e) {
             e.preventDefault();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+            var formData = new FormData(this);
+            formData.append('id',id);
             $.ajax({
-                url: "category/"+id,
-                method: 'PUT',
-                data: {
-                    categories_name: $('#editcategories_name').val(),
-                    catelogue_id: $('#editcatelogue_id').val(),
-                    description: $('#editDescription').val(),
-                },
+                url: "categoryUpdate",
+                method: 'post',
+                cache:false,
+                contentType: false,
+                processData: false,                   
+                data:formData,
                 success: function(result) {
                     if(result.errors) {
                         $('.error').html('');
@@ -314,6 +319,7 @@
             });
        }
        Catalog();
+
     });
 </script>
 @endsection

@@ -66,13 +66,20 @@ class CategoryController extends Controller
             'categories_name' => 'required',
             'catelogue_id' => 'required',
         ]);
-
+        
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-        $this->Category->storeData($request->all());
+        if ($files = $request->file('image')) {
+            
+            $fileName =  "uphaaar_gifts-".time().'.'.$request->image->getClientOriginalExtension();
+            $request->image->storeAs('category', $fileName);
 
+        }
+        $category=$this->Category->storeData($request->all());
+        $category->image=$fileName;
+        $category->save();
         return response()->json(['success'=>'Category added successfully']);
     }
 
@@ -101,13 +108,13 @@ class CategoryController extends Controller
                 <label for="categories_name">Name</label>
                 <div class="form-group">
                     <div class="form-line">
-                        <input type="text" id="editcategories_name" name="editcategories_name" value="'.$data->categories_name.'" class="form-control" placeholder="Enter your category name">
+                        <input type="text" id="editcategories_name" name="categories_name" value="'.$data->categories_name.'" class="form-control" placeholder="Enter your category name">
                     </div>
                 </div>
                 <label for="catelogue_id">Catalogue</label>
                 <div class="form-group">
                     <div class="form-line">
-                        <select class="form-control" id="editcatelogue_id" name="editcatelogue_id">
+                        <select class="form-control" id="editcatelogue_id" name="catelogue_id">
                             <option value="">-- Please select --</option>';
                            foreach($catalogue as $key)
                            {
@@ -120,10 +127,21 @@ class CategoryController extends Controller
         $html .= '         </select>
                     </div>
                 </div>
+                <label for="image">Images</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                    <input type="file" name="image_1" id="image_1" placeholder="Choose image" >          
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                    <img src="'.asset('storage/category/'.$data->image).'" name="old_img" width="50px" height="50px">          
+                                    </div>
+                                </div>
                 <label for="description">Description</label>
                 <div class="form-group">
                     <div class="form-line">
-                        <input type="text" id="editDescription" name="editDescription" value="'.$data->description.'" class="form-control" placeholder="Enter your description">
+                        <input type="text" id="editDescription" name="Description" value="'.$data->description.'" class="form-control" placeholder="Enter your description">
                     </div>
                 </div>
                 <br>
@@ -138,9 +156,9 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $validator = \Validator::make($request->all(), [
+       $validator = \Validator::make($request->all(), [
             'categories_name' => 'required',
             'catelogue_id' => 'required',
         ]);
@@ -148,8 +166,16 @@ class CategoryController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
-
-        $this->Category->updateData($id, $request->all());
+       
+        if ($files = $request->file('image_1')) {
+            $fileName =  "uphaaar_gifts-".time().'.'.$request->image_1->getClientOriginalExtension();
+            $request->image_1->storeAs('category', $fileName);
+            $category=Category::find($request->id);
+            $category->image=$fileName;
+            $category->save();  
+        }
+        $category=$this->Category->updateData($request->id, $request->only('categories_name','catelogue_id','Description'));
+        
 
         return response()->json(['success'=>'Category updated successfully']);
     }

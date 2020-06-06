@@ -33,6 +33,8 @@ Route::resource('home', 'HomeController');
 /* CATEGORY ROUTE */
 Route::resource('category', 'CategoryController');
 Route::match(['get', 'post'], 'get-category','CategoryController@getCategory')->name('get-category');
+Route::match(['get', 'post'], 'category-image','CategoryController@getImage')->name('category-image');
+Route::match(['get', 'post'], 'categoryUpdate','CategoryController@update')->name('categoryUpdate');
 /* PRODUCT ROUTE */
 Route::resource('product', 'ProductController');
 Route::match(['get', 'post'], 'get-product','ProductController@getProduct')->name('get-product');
