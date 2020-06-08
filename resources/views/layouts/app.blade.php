@@ -102,7 +102,10 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="bars"></a>
                 <center>
-                <a class="navbar-brand brand-name"   href="{{route('/')}}">{{ config('app.name', 'Shoping Add') }}</a>
+                <a class="navbar-brand brand-name"   href="{{route('/')}}">
+                <!-- {{ config('app.name', 'Shoping Add') }} -->
+                <img src="{{asset('Uphaaar.png')}}"  alt="logo"  style="margin-top:-16px;height:53px;">
+            </a>
             </center>
 
             <ul class="nav navbar-nav navbar-right">
@@ -261,16 +264,18 @@
                 <div class="body product_view">
                     <div class="row cat-show card">
                         @if($category??"")
-                        @foreach ($category as $key=>$value)
+                        @foreach ($category as $key_1=>$value_1)
+                        @if($value_1->catelogue_id==$value->id)
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2  ">
-                            <a href="{{url('product_filter')}}" class="thumbnail" style="border:none!important;">
-                                <img src="{{asset('frontEnd/images/tshirt.jpeg')}}" >
+                            <a href="{{url('product_filter/12')}}" class="thumbnail" style="border:none!important;">
+                                <img src="{{asset('storage/category/'.$value_1->image)}}" style="height:80px;" >
                                 <div class="T-Shirttion" style="padding:5px;">
-                                    Cat {{ $key }}
+                                 {{ $value_1->categories_name }}
                                 </div>
 
                             </a>
                         </div>
+                        @endif
                         @endforeach
                         @endif
                     </div>
@@ -395,6 +400,12 @@
                     @can('manage-users')
 
 
+                    <li class="">
+                        <a href="{{ url('/slider') }}">
+                             <i class="material-icons">device_hub</i>
+                             <span>Slider</span>
+                        </a>
+                    </li>
                     <li class="">
                         <a href="{{ url('/catalogue') }}">
                              <i class="material-icons">device_hub</i>
@@ -640,24 +651,25 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-0" >
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                           @foreach($slider as $key=>$value)   
+                            <li data-target="#carousel-example-generic" data-slide-to="{{$key}}" class="
+                            @if($key==0)
+                                    active
+                            @endif
+                            "></li>
+                            @endforeach 
                         </ol>
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner " role="listbox">
-                                    <div class="item active">
-                                        <img src="{{asset('frontEnd/images/image-gallery/1919.jpg')}}"  class="slider_img" />
+                                @foreach($slider as $key=>$value)
+                                    <div class="item 
+                                    @if($key==0)
+                                    active
+                                    @endif ">
+                                        <img src="{{asset('storage/slider/'.$value->image)}}"  class="slider_img" alt="uphaaar_offer_slider" />
 
                                     </div>
-                                    <div class="item">
-                                        <img src="{{asset('frontEnd/images/image-gallery/1919.jpg')}}" class="slider_img" />
-
-                                    </div>
-                                    <div class="item">
-                                        <img src="{{asset('frontEnd/images/image-gallery/1919.jpg')}}"  class="slider_img" />
-
-                                    </div>
+                                @endforeach 
                                 </div>
                                 <!-- Controls -->
 

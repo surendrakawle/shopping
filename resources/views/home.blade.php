@@ -17,9 +17,10 @@
                             <div class="row">
                                 @if($category??"")
                                 @foreach ($category as $key=>$value)
+                                <a href="{{url('product_filter/'.$value->id)}}">
                                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 prod">
                                     <div class="thumbnail" style="padding:10px!important">
-                                        <img src="{{asset('frontEnd/images/tshirt.jpeg')}}" class="img-size">
+                                        <img src="{{asset('storage/category/'.$value->image)}}" class="img-size">
                                         <div class="T-Shirttion product-text">
                                             {{ $value->categories_name }}
                                         </div>
@@ -29,6 +30,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                </a>
                                 @endforeach
                                 @endif
 

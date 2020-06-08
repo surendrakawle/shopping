@@ -17,7 +17,7 @@ Route::get('/profile', function () {
     return view('welcome');
 })->name('profile');
 Route::get('/', 'HomeController@index')->name('/');
-Route::match(['get', 'post'], '/product_filter', function () { return view('product_filter')->with('sidebar','true');});
+Route::match(['get', 'post'], '/product_filter/{id}', function () { return view('product_filter')->with('sidebar','true');});
 Auth::routes();
 
 
@@ -58,5 +58,12 @@ Route::get('/callback','SocialAuthGoogleController@callback');
 Route::get('/payment','PaytmController@pay');
 Route::post('/payment/status', 'PaytmController@paymentCallback');
 
+/* SLIDER ROUTE */
+Route::resource('slider', 'SliderController');
+Route::match(['get', 'post'], 'get-slider','SliderController@getSlider')->name('get-slider');
+Route::match(['get', 'post'], 'slider-image','SliderController@getImage')->name('slider-image');
+Route::match(['get', 'post'], 'sliderUpdate','SliderController@update')->name('sliderUpdate');
+
+//sociallite
 Route::get('/login/{social}','Auth\LoginController@socialLogin')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
 Route::get('/login/{social}/callback','Auth\LoginController@handleProviderCallback')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
