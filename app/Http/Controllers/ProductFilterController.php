@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Products;
 use App\Category;
 
-class ProductController extends Controller
+class ProductFilterController extends Controller
 {
     public function __construct()
     {
@@ -18,9 +18,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view($this->path.'index');
+		$products=$this->Product->where(['categories_name'=>$id])->get();
+        return view($this->path.'filter')->with(['sidebar'=>'true','products'=>$products]);
     }
 
     public function getProduct(Request $request)
@@ -148,9 +149,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-		$data = $this->Product->findData($id);
-        
-			return response()->json(['data'=>$data]);
+        //
     }
 
     /**

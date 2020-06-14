@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('style')
-            <link href="{{asset('frontEnd/plugins/light-gallery/css/lightgallery.css')}}" rel="stylesheet">
+           <!-- <link href="{{asset('frontEnd/plugins/light-gallery/css/lightgallery.css')}}" rel="stylesheet">
+			---><link href="{{asset('css/jquery.jqZoom.css')}}"  rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
 
@@ -19,36 +20,36 @@
                         </div>
                         <div class="body  table-responsive">
                             <div class="row clearfix">
-                                <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                     <div class="card">
 
                                         <div class="body">
                                             <div id="aniimated-thumbnials" class="list-unstyled row clearfix">
-                                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                                    <a href="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}" data-sub-html="T - shirt ">
-                                                        <img class="img-responsive thumbnail" src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}">
-                                                    </a>
+												 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 zoom-box">
+                                                    <img class="img-responsive" id="img1"  src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}" height="200px">
+                                                    
                                                 </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                                    <a href="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}" data-sub-html="T - shirt">
-                                                        <img class="img-responsive thumbnail" src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}">
-                                                    </a>
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+                                                    <img class="img-responsive thumbnail " style="border: 1px solid #ddd!important;"  src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}">
+                                                    
                                                 </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                                    <a href="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}" data-sub-html="T - shirt">
-                                                        <img class="img-responsive thumbnail" src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}">
-                                                    </a>
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+                                                    <img class="img-responsive thumbnail" style="border: 1px solid #ddd!important;" src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}">
+                                                    
                                                 </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                                    <a href="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}" data-sub-html="T - shirt">
-                                                        <img class="img-responsive thumbnail" src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}">
-                                                    </a>
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+                                                    <img class="img-responsive thumbnail" style="border: 1px solid #ddd!important;" src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}">
+                                                    
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+                                                    <img class="img-responsive thumbnail"  style="border: 1px solid #ddd!important;" src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}">
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                                     <div class="header">
                                                 <a href="{{url('payment')}}" class="btn btn-primary waves-effect pull-right " role="button" >  Buy Now </a>
                                             <b>
@@ -167,10 +168,22 @@
 
 @endsection
 @section('script')
- <!-- Light Gallery Plugin Js -->
+ <!-- Light Gallery Plugin Js 
  <script src="{{ asset('frontEnd/plugins/light-gallery/js/lightgallery-all.js')}}"></script>
-
- <!-- Custom Js -->
+ ---->
+ <!-- Custom Js 
  <script src="{{ asset('frontEnd/js/pages/medias/image-gallery.js')}}"></script>
+ ---->
+ <script src="{{ asset('js/jquery.jqZoom.js')}}"></script>
+ <script>
+ $(function(){
+  $("#img1").jqZoom({
+    selectorWidth: 50,
+    selectorHeight: 50,
+    viewerWidth: 400,
+    viewerHeight: 300
+  });
+})
+ </script>
 @endsection
 

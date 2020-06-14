@@ -104,7 +104,7 @@
                 <center>
                 <a class="navbar-brand brand-name"   href="{{route('/')}}">
                 <!-- {{ config('app.name', 'Shoping Add') }} -->
-                <img src="{{asset('Uphaaar.png')}}"  alt="logo"  style="margin-top:-16px;height:53px;">
+                <img src="{{asset('Uphaaar.png')}}"  alt="logo"  style="margin-top:-15px;height:45px;">
             </a>
             </center>
 
@@ -260,15 +260,15 @@
         </div>
         @foreach($category_1 as $key=>$value)
         <div class="collapse list_show" id="collapsenav{{$key}}">
-            <div class="well" style="background-color:#f5f5f508!important;border: none!important;">
+            <div class="well nav-collapse-1" >
                 <div class="body product_view">
-                    <div class="row cat-show card">
+                    <div class="row cat-show card at-container">
                         @if($category??"")
                         @foreach ($category as $key_1=>$value_1)
                         @if($value_1->catelogue_id==$value->id)
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2  ">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 at-item ">
                             <a href="{{url('product_filter/12')}}" class="thumbnail" style="border:none!important;">
-                                <img src="{{asset('storage/category/'.$value_1->image)}}" style="height:80px;" >
+                                <img src="{{asset('storage/category/'.$value_1->image)}}" style="height:80px;width:100%;" >
                                 <div class="T-Shirttion" style="padding:5px;">
                                  {{ $value_1->categories_name }}
                                 </div>
@@ -424,12 +424,13 @@
                              <span>Product</span>
                         </a>
                     </li>
+					<!----
                     <li class="">
                         <a href="{{ url('/') }}">
                              <i class="material-icons">store</i>
                              <span>Sale</span>
                         </a>
-                    </li>
+                    </li> ---->
                     <li class="">
                         <a href="{{ route('/') }}">
                              <i class="material-icons"> local_shipping</i>
@@ -437,7 +438,7 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="{{ route('/') }}">
+                        <a href="{{ route('Uphaaar_Gift_gallary.index') }}">
                              <i class="material-icons">wallpaper</i>
                              <span>Image Gallery</span>
                         </a>
@@ -473,11 +474,11 @@
                     @if(Auth::user())
                     <li>
                         <a href="{{ route('logout') }}"  onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
+                                             document.getElementById('logout-form_1').submit();">
                                              <i class="material-icons">input</i>
                                             <span>{{ __('Logout') }}</span>
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form_1" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                     </li>

@@ -1,3 +1,77 @@
+
+/* Image animation */
+div.at-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.at-item {
+ /* width: 100px;
+  height: 100px;
+  background-color:#ffe672;*/
+  animation-name: shake-center;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: none;
+}
+@keyframes shake-center {
+  0%{
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+  }
+  10%{
+    -webkit-transform: rotate(8deg);
+    transform: rotate(8deg);
+  }
+  20%{
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+  30%{
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+  }
+  40%{
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+  50%{
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+  }
+  60%{
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+  70%{
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+  }
+  80%{
+    -webkit-transform: rotate(-8deg);
+    transform: rotate(-8deg);
+  }
+  90%{
+    -webkit-transform: rotate(8deg);
+    transform: rotate(8deg);
+  }
+  100%{
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+  }
+}
+
+/* End Image animation */
+
+
 /* footer a tag underline remove   */
 
 .footer_ul>li>a {
@@ -17,10 +91,23 @@
     text-shadow: 2px 1px 2px #101010;
 }
 
+/* filter page */
 .img-size {
     height: 250px!important;
+	width:100%;
 }
-
+/* home page */
+.nav-collapse-1{
+	background-color:#9d989ee0!important;
+	border: none!important;
+	height:700px;
+} 
+ .filter_img_title{
+	font-size: 16px;
+    font-family: cursive;
+    padding: 10px;
+}
+ }
 .login_brand {
     width: 106%;
     opacity: 0.7;

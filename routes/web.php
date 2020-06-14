@@ -17,7 +17,7 @@ Route::get('/profile', function () {
     return view('welcome');
 })->name('profile');
 Route::get('/', 'HomeController@index')->name('/');
-Route::match(['get', 'post'], '/product_filter/{id}', function () { return view('product_filter')->with('sidebar','true');});
+Route::match(['get', 'post'], '/product_filter/{id}','ProductFilterController@index');
 Auth::routes();
 
 
@@ -67,3 +67,6 @@ Route::match(['get', 'post'], 'sliderUpdate','SliderController@update')->name('s
 //sociallite
 Route::get('/login/{social}','Auth\LoginController@socialLogin')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
 Route::get('/login/{social}/callback','Auth\LoginController@handleProviderCallback')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
+
+/// Image Gallary
+Route::resource('Uphaaar_Gift_gallary','GalleryController');

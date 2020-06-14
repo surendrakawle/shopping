@@ -181,16 +181,105 @@
                 <button type="button" class="close modelClose" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
-            <div class="modal-body">
+            <div class="modal-body" > 
+				<form id="wizard_with_validation_1" method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="id" id="id_1" value="">
 
-                <div id="EditProductModalBody">
+                                <h3>FIRST</h3>
+                                <fieldset>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="name" id="name_1" required>
+                                            <label class="form-label">Product Name*</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="code" id="code_1" >
+                                            <label class="form-label">Code</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="brand_name" id="brand_name_1" >
+                                            <label class="form-label">Brand Name</label>
+                                        </div>
+                                    </div>
+                                    <label class="form-label">Category Name*</label>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <select class="form-control" id="categories_name_1" name="categories_name" required>
+                                                <option value="1">-- Please select --</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </fieldset>
 
-                </div>
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="SubmitEditProductForm">Update</button>
-                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">Close</button>
+                                <h3>SECOUND</h3>
+                                <fieldset>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" name="color" id="color_1" class="form-control" >
+                                            <label class="form-label">Color</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="number" name="price" id="price_1" class="form-control" required>
+                                            <label class="form-label">Price*</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="number" name="discount" id="discount_1" class="form-control" required>
+                                            <label class="form-label">Discount*</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input  type="text" name="size" id="size_1" class="form-control" >
+                                            <label class="form-label">Size*</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <textarea id="description_1" name="description" cols="30" rows="3" class="form-control no-resize" required></textarea>
+                                            <label class="form-label">Description*</label>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+
+                                <h3>FINAL</h3>
+                                <fieldset>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" name="unit" id="unit_1" class="form-control" required>
+                                            <label class="form-label">Unit*</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input  type="number" name="quantity" id="quantity_1" class="form-control" >
+                                            <label class="form-label">Quantity</label>
+                                        </div>
+                                    </div>
+
+                                    <label class="form-label">Images*</label>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                                    <input name="images[]" id="images_1" type="file" multiple  required/>
+                                        </div>
+                                    </div>
+                                    <input id="stock_1" name="stock" type="checkbox" required checked>
+                                    <label for="acceptTerms-2">Product in stock.</label><br>
+                                    <input id="home_page_1" name="home_page" type="checkbox">
+                                    <label for="acceptTerms-2">Show in home page.</label>
+                                </fieldset>
+                                <button type="submit" class="btn btn-danger m-t-15 waves-effect" id="SubmitCreateProductForm" style="display:none">Add</button>
+                            </form>
+               
             </div>
         </div>
     </div>
@@ -226,6 +315,7 @@
 
 
 <script type="text/javascript">
+var save_url="{{ route('product.store') }}";
     $(document).ready(function() {
         // init datatable.
         var dataTable = $('.datatable').DataTable({
@@ -246,57 +336,6 @@
             ]
         });
 
-       /* // Create product Ajax request.
-        $('#SubmitCreateProductForm').click(function(e) {
-            // e.preventDefault();
-            return false;
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                url: "{{ route('product.store') }}",
-                method: 'post',
-                data: {
-                     name: $('#name').val(),
-                     code: $('#code').val(),
-                     description: $('#description').val(),
-                     color: $('#color').val(),
-                     price: $('#price').val(),
-                     images: $('#images').val(),
-                     categories_name: $('#categories_name').val(),
-                     size: $('#size').val(),
-                     unit: $('#unit').val(),
-                     stock: $('#stock').val(),
-                     brand_name: $('#brand_name').val(),
-                     quantity: $('#quantity').val(),
-                     discount: $('#discount').val(),
-                     home_page: $('#home_page').val(),
-                },
-                success: function(result) {
-                    if(result.errors) {
-                        $('.error').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.error').show();
-                            $('.error').append('<div class="alert bg-red alert-dismissible" role="alert"> '+
-                               '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> '+value+'</div>');
-                        });
-                    } else {
-
-                        $('#CreateProductModal').click();
-                        $('.error').html('');
-                        $('.datatable').DataTable().ajax.reload();
-                        $('#categories_name').val('');
-                        $('#descriptionription').val('');
-                        showNotification('alert-success', result.success, 'top', 'center', 'animated zoomInDown', 'animated zoomOutDown');
-
-
-                    }
-                }
-            });
-        });*/
-
         // Get single product in EditModel
         $('.modelClose').on('click', function(){
             $('#EditProductModal').hide();
@@ -315,7 +354,36 @@
                 // },
                 success: function(result) {
                     console.log(result);
-                    $('#EditProductModalBody').html(result.html);
+					$('#id_1').val(result.data.id);
+					$('#brand_name_1').val(result.data.brand_name);
+					$('#brand_name_1').parent().addClass("focused");
+					$('#categories_name_1').val(result.data.categories_name);
+					$('#categories_name_1').parent().addClass("focused");
+					$('#code_1').val(result.data.code);
+					$('#code_1').parent().addClass("focused");
+					$('#color_1').val(result.data.color);
+					$('#color_1').parent().addClass("focused");
+					$('#home_page_1').val(result.data.home_page);
+					$('#discount_1').val(result.data.discount);
+					$('#discount_1').parent().addClass("focused");
+					$('#name_1').val(result.data.name);
+					$('#name_1').parent().addClass("focused");
+					$('#description_1').val(result.data.description);
+					$('#description_1').parent().addClass("focused");
+					$('#price_1').val(result.data.price);
+					$('#price_1').parent().addClass("focused");
+					$('#purchase_price_1').val(result.data.purchase_price);
+					$('#purchase_price_1').parent().addClass("focused");
+					$('#quantity_1').val(result.data.quantity);
+					$('#quantity_1').parent().addClass("focused");
+					$('#size_1').val(result.data.size);
+					$('#size_1').parent().addClass("focused");
+					$('#stock_1').val(result.data.stock);
+					$('#unit_1').val(result.data.unit);
+					$('#unit_1').parent().addClass("focused");
+					//$('#images_1').val(result.data.images);
+					
+                    //$('#EditProductModalBody').html(result.html);
                     $('#EditProductModal').show();
                 }
             });

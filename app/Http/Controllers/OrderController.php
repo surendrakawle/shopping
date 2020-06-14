@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\Product;
 use Illuminate\Http\Request;
-use App\Products;
-use App\Category;
 
-class ProductController extends Controller
+class OrderController extends Controller
 {
     public function __construct()
     {
-        $this->Product = new Products;
-        $this->path ="admin/products/";
+        $this->Order = new Order;
+        $this->path ="admin/order/";
     }
     /**
      * Display a listing of the resource.
@@ -23,13 +23,13 @@ class ProductController extends Controller
         return view($this->path.'index');
     }
 
-    public function getProduct(Request $request)
+    public function getOrder(Request $request)
     {
-        $data = $this->Product->getData();
+        $data = $this->Order->getData();
         return \DataTables::of($data)
             ->addColumn('Actions', function($data) {
-                return '<button type="button" class="btn btn-success btn-sm" id="getEditProductData" data-id="'.$data->id.'">Edit</button>
-                    <button type="button" data-id="'.$data->id.'" data-toggle="modal" data-target="#DeleteProductModal" class="btn btn-danger btn-sm" id="getDeleteId">Delete</button>';
+                return '<button type="button" class="btn btn-success btn-sm" id="getEditOrderData" data-id="'.$data->id.'">Edit</button>
+                    <button type="button" data-id="'.$data->id.'" data-toggle="modal" data-target="#DeleteOrderModal" class="btn btn-danger btn-sm" id="getDeleteId">Delete</button>';
             })
             ->addColumn('catalogue',function($data){
                 $categories=Category::where("id",$data->categories_name)->get()->first();
@@ -73,7 +73,7 @@ class ProductController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
         $img=array();
-        $product =new  Products;
+        $Order =new  Orders;
         if($request->hasFile('images'))
         {
             $img=array();
@@ -82,7 +82,7 @@ class ProductController extends Controller
                 $img_temp  =$file; //$request['image'];
                 $extension = $img_temp->getClientOriginalExtension();
                 $filename  = rand(111,99999).'.'.$extension;
-                $image_path = "uploads/product/".$filename;
+                $image_path = "uploads/Order/".$filename;
 
                 //image resize
                 move_uploaded_file($img_temp, $image_path);
@@ -90,43 +90,43 @@ class ProductController extends Controller
                 // Image::make($img_temp)->resize(400,400)->save($image_path);
 
             }
-         $product->images=json_encode($img);
+         $Order->images=json_encode($img);
         }
         if(isset($request->name))
-        $product->name=$request->name;
+        $Order->name=$request->name;
         if(isset($request->code))
-        $product->code=$request->code;
+        $Order->code=$request->code;
         if(isset($request->description))
-        $product->description=$request->description;
+        $Order->description=$request->description;
         if(isset($request->color))
-        $product->color=$request->color;
+        $Order->color=$request->color;
         if(isset($request->price))
-        $product->price=$request->price;
+        $Order->price=$request->price;
         if(isset($request->status))
-        $product->status=$request->status;
+        $Order->status=$request->status;
         if(isset($request->unit))
-        $product->unit=$request->unit;
+        $Order->unit=$request->unit;
         if(isset($request->size))
-        $product->size=$request->size;
+        $Order->size=$request->size;
         if(isset($request->categories_name))
-        $product->categories_name=$request->categories_name;
+        $Order->categories_name=$request->categories_name;
         if(isset($request->stock))
-        $product->stock=$request->stock;
+        $Order->stock=$request->stock;
         if(isset($request->brand_name))
-        $product->brand_name=$request->brand_name;
+        $Order->brand_name=$request->brand_name;
         if(isset($request->quantity))
-        $product->quantity=$request->quantity;
+        $Order->quantity=$request->quantity;
         if(isset($request->discount))
-        $product->discount=$request->discount;
+        $Order->discount=$request->discount;
         if(isset($request->purchase_price))
-        $product->purchase_price=$request->purchase_price;
+        $Order->purchase_price=$request->purchase_price;
         if(isset($request->home_page))
-        $product->home_page=$request->home_page;
-        $product->save();
+        $Order->home_page=$request->home_page;
+        $Order->save();
         // $request->images=json_encode($img);
-        // $this->Product->storeData($request->all());
+        // $this->Order->storeData($request->all());
        // return redirect()->back();
-         return response()->json(['success'=>'Product added successfully']);
+         return response()->json(['success'=>'Order added successfully']);
     }
 
     /**
@@ -148,7 +148,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-		$data = $this->Product->findData($id);
+		$data = $this->Order->findData($id);
         
 			return response()->json(['data'=>$data]);
     }
@@ -173,8 +173,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $this->Product->deleteData($id);
-        return response()->json(['success'=>'Product deleted successfully']);
+        $this->Order->deleteData($id);
+        return response()->json(['success'=>'Order deleted successfully']);
 
     }
 }

@@ -714,18 +714,28 @@ xcustom form elements
 
 		<section class="cd-gallery">
 			<ul>
-				<li class="mix color-1 check1 radio2 option3"><a href="{{url('productdesc')}}" ><img src="https://entrusters.com/templates/yoo_moustache/html/com_entrusters_shop/products/ui-img/img-1.jpg" alt="Image 1"></li></a>
-				<li class="mix color-2 check2 radio2 option2"><a href="{{url('productdesc')}}" ><img src="https://entrusters.com/templates/yoo_moustache/html/com_entrusters_shop/products/ui-img/img-2.jpg" alt="Image 2"></li></a>
-				<li class="mix color-1 check3 radio3 option1"><a href="{{url('productdesc')}}" ><img src="https://entrusters.com/templates/yoo_moustache/html/com_entrusters_shop/products/ui-img/img-3.jpg" alt="Image 3"></li></a>
-				<li class="mix color-1 check3 radio2 option4"><a href="{{url('productdesc')}}" ><img src="https://entrusters.com/templates/yoo_moustache/html/com_entrusters_shop/products/ui-img/img-4.jpg" alt="Image 4"></li></a>
-				<li class="mix color-1 check1 radio3 option2"><a href="{{url('productdesc')}}" ><img src="https://entrusters.com/templates/yoo_moustache/html/com_entrusters_shop/products/ui-img/img-5.jpg" alt="Image 5"></li></a>
-				<li class="mix color-2 check2 radio3 option3"><a href="{{url('productdesc')}}" ><img src="https://entrusters.com/templates/yoo_moustache/html/com_entrusters_shop/products/ui-img/img-6.jpg" alt="Image 6"></li></a>
-				<li class="mix color-2 check2 radio2 option1"><a href="{{url('productdesc')}}" ><img src="https://entrusters.com/templates/yoo_moustache/html/com_entrusters_shop/products/ui-img/img-7.jpg" alt="Image 7"></li></a>
-				<li class="mix color-1 check1 radio3 option4"><a href="{{url('productdesc')}}" ><img src="https://entrusters.com/templates/yoo_moustache/html/com_entrusters_shop/products/ui-img/img-8.jpg" alt="Image 8"></li></a>
-				<li class="mix color-2 check1 radio2 option3"><a href="{{url('productdesc')}}" ><img src="https://entrusters.com/templates/yoo_moustache/html/com_entrusters_shop/products/ui-img/img-9.jpg" alt="Image 9"></li></a>
-				<li class="mix color-1 check3 radio2 option4"><a href="{{url('productdesc')}}" ><img src="https://entrusters.com/templates/yoo_moustache/html/com_entrusters_shop/products/ui-img/img-10.jpg" alt="Image 10"></li></a>
-				<li class="mix color-1 check3 radio3 option2"><a href="{{url('productdesc')}}" ><img src="https://entrusters.com/templates/yoo_moustache/html/com_entrusters_shop/products/ui-img/img-11.jpg" alt="Image 11"></li></a>
-				<li class="mix color-2 check1 radio3 option1"><a href="{{url('productdesc')}}" ><img src="https://entrusters.com/templates/yoo_moustache/html/com_entrusters_shop/products/ui-img/img-12.jpg" alt="Image 12"></li></a>
+				@foreach($products as $key=>$value)
+				<?php
+					$image=json_decode($value->images);
+				?>
+				<li class="mix color-1 check1 radio2 option3 card" style="padding:10px;"><a href="{{url('productdesc')}}"  >
+				<img src="{{asset($image[0])}}" alt="Image 1">
+				<div class="filter_img_title">{{$value->name}}</div>
+				<div class="filter_img_title">
+				Rs. {{$value->price}} 
+				</div>
+				</a>
+				<div class="filter_img_title">
+				<span class="material-icons" style="color:#ffdf43;">star</span>
+				<span class="material-icons" style="color:#ffdf43;">star</span>
+				<span class="material-icons" style="color:#ffdf43;">star</span>
+				<span class="material-icons" style="color:#ffdf43;">star</span>
+				<span class="material-icons" style="color:#ffdf43;">star_half</span> 
+				<a href="{{ route('order') }}" class="btn btn-sm btn-primary pull-right"><i class="material-icons">shopping_cart</i></a>
+				
+				</div>
+				</li>
+				@endforeach
 				<li class="gap"></li>
 				<li class="gap"></li>
 				<li class="gap"></li>

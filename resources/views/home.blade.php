@@ -25,7 +25,7 @@
                                             {{ $value->categories_name }}
                                         </div>
                                         <div class="spacer">
-                                           <br>
+        
                                            <br>
                                         </div>
                                     </div>
