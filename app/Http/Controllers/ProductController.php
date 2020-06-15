@@ -22,6 +22,17 @@ class ProductController extends Controller
     {
         return view($this->path.'index');
     }
+	
+	// product description
+	public function description(Request $request,$id)
+    {
+		$product=$this->Product->findData($id);
+		if(isset($product)){
+        return view($this->path.'description')->with(compact('product'));
+		}else{
+			return redirect('/');
+		}
+    }
 
     public function getProduct(Request $request)
     {

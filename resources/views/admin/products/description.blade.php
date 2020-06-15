@@ -11,9 +11,9 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <a href="{{route('order')}}" class="btn btn-primary waves-effect pull-right " role="button" >  Custom T - Shirt </a>
+                            <a href="{{route('order')}}" class="btn btn-primary waves-effect pull-right " role="button" >  CUSTOMIZE PRODUCT </a>
                             <h2>
-                               T - Shirt
+							{{$product->name}}
                             </h2>
 
 
@@ -25,26 +25,19 @@
 
                                         <div class="body">
                                             <div id="aniimated-thumbnials" class="list-unstyled row clearfix">
+												<?php 
+													$images=json_decode($product->images);
+												?>
 												 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 zoom-box">
-                                                    <img class="img-responsive" id="img1"  src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}" height="200px">
+                                                    <img class="img-responsive" id="img1"  src="{{ asset($images[0]) }}" height="200px">
                                                     
                                                 </div>
+												@foreach($images as $key=>$value)
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
-                                                    <img class="img-responsive thumbnail " style="border: 1px solid #ddd!important;"  src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}">
+                                                    <img class="img-responsive thumbnail image-change" style="border: 1px solid #ddd!important;"  src="{{ asset($value) }}">
                                                     
                                                 </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
-                                                    <img class="img-responsive thumbnail" style="border: 1px solid #ddd!important;" src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}">
-                                                    
-                                                </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
-                                                    <img class="img-responsive thumbnail" style="border: 1px solid #ddd!important;" src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}">
-                                                    
-                                                </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
-                                                    <img class="img-responsive thumbnail"  style="border: 1px solid #ddd!important;" src="{{ asset('frontEnd/images/image-gallery/1.jpeg') }}">
-                                                    
-                                                </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -54,7 +47,7 @@
                                                 <a href="{{url('payment')}}" class="btn btn-primary waves-effect pull-right " role="button" >  Buy Now </a>
                                             <b>
                                                 <h2>
-                                                    Printed T-Shirt
+                                                    {{$product->name}}
                                                 </h2>
                                             </b>
 
@@ -62,7 +55,7 @@
                                             </div>
                                             <div class="row clearfix">
                                                 <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
-                                                  <h3> &nbsp;&nbsp; ₹199  &nbsp;<strike>₹999 </strike>&nbsp; 80% off</h3>
+                                                  <h3> &nbsp;&nbsp; ₹ {{$product->price -($product->price*$product->discount/100)}}  &nbsp;<strike>₹ {{$product->price}} </strike>&nbsp; {{$product->discount}}% off</h3>
                                                     <div class="panel-group" id="accordion_1" role="tablist" aria-multiselectable="true">
                                                         <div class="panel ">
                                                             <div class="panel-heading" role="tab" id="headingOne_1">
@@ -157,7 +150,23 @@
                                                                 </div>
                                                             </div>
 
-                                                </div>
+														</div>
+														<div class="panel ">
+                                                            <div class="panel-heading" role="tab" id="headingThree_111">
+                                                                <h4 class="panel-title">
+                                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseThree_111" aria-expanded="false"
+                                                                       aria-controls="collapseThree_111">
+                                                                       Description
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapseThree_111" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_11">
+                                                                <div class="panel-body">
+																{{$product->description}}
+                                                                </div>
+                                                            </div>
+
+														</div>
                                     </div>
                                 </div>
 
@@ -177,11 +186,20 @@
  <script src="{{ asset('js/jquery.jqZoom.js')}}"></script>
  <script>
  $(function(){
-  $("#img1").jqZoom({
+  
+  var options={
     selectorWidth: 50,
     selectorHeight: 50,
-    viewerWidth: 400,
-    viewerHeight: 300
+    viewerWidth: 350,
+    viewerHeight: 275
+  };
+  $("#img1").jqZoom(options);
+  $('.image-change').click(function(e){
+	 $('.viewer-box').children('img').remove();
+	 $('.zoom-selector').remove();
+	  let url= $(this).attr('src');
+	 $("#img1").attr('src',url); 
+	  $("#img1").jqZoom(options);
   });
 })
  </script>

@@ -718,7 +718,7 @@ xcustom form elements
 				<?php
 					$image=json_decode($value->images);
 				?>
-				<li class="mix color-1 check1 radio2 option3 card" style="padding:10px;"><a href="{{url('productdesc')}}"  >
+				<li class="mix color-1 check1 radio2 option3 card" style="padding:10px;"><a href="{{url('Uphaaar_product_description/'.$value->id)}}"  >
 				<img src="{{asset($image[0])}}" alt="Image 1">
 				<div class="filter_img_title">{{$value->name}}</div>
 				<div class="filter_img_title">

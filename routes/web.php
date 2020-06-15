@@ -70,3 +70,6 @@ Route::get('/login/{social}/callback','Auth\LoginController@handleProviderCallba
 
 /// Image Gallary
 Route::resource('Uphaaar_Gift_gallary','GalleryController');
+
+/// Description
+Route::match(['post','get'],'Uphaaar_product_description/{id}','ProductController@description');

@@ -13,7 +13,7 @@
 }
 .zoom-box .viewer-box{
     position: absolute;
-    border: 1px solid rgb(239,237,240);
+   /* border: 1px solid rgb(239,237,240);*/
     display: none;
     overflow: hidden;
 	z-index: 1;
