@@ -11,7 +11,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <a href="{{route('order')}}" class="btn btn-primary waves-effect pull-right " role="button" >  CUSTOMIZE PRODUCT </a>
+                            <a href="" class="btn btn-primary waves-effect pull-right " role="button" >  CUSTOMIZE PRODUCT </a>
                             <h2>
 							{{$product->name}}
                             </h2>
@@ -43,8 +43,13 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="header">
-                                                <a href="{{url('payment')}}" class="btn btn-primary waves-effect pull-right " role="button" >  Buy Now </a>
+								<form method="POST" enctype="multipart/form-data" action="{{route('cart.store')}}">
+								@csrf
+                                   <input type="hidden" name="product_id" value="{{$product->id}}">
+                                  <input type="hidden" name="qty" value="1">
+								
+								   <div class="header">
+                                                <button type="submit" class="btn btn-primary waves-effect pull-right " role="button" >  Buy Now </button>
                                             <b>
                                                 <h2>
                                                     {{$product->name}}
@@ -53,6 +58,7 @@
 
 
                                             </div>
+								</form>
                                             <div class="row clearfix">
                                                 <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
                                                   <h3> &nbsp;&nbsp; ₹ {{$product->price -($product->price*$product->discount/100)}}  &nbsp;<strike>₹ {{$product->price}} </strike>&nbsp; {{$product->discount}}% off</h3>
@@ -169,7 +175,6 @@
 														</div>
                                     </div>
                                 </div>
-
                         </div>
                     </div>
                 </div>
@@ -190,8 +195,8 @@
   var options={
     selectorWidth: 50,
     selectorHeight: 50,
-    viewerWidth: 350,
-    viewerHeight: 275
+    viewerWidth: 700,
+    viewerHeight: 375
   };
   $("#img1").jqZoom(options);
   $('.image-change').click(function(e){

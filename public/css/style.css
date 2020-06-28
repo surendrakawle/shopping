@@ -6,17 +6,21 @@ div.at-container {
   justify-content: center;
   height: 100%;
 }
-.at-item {
+.txt--gradient-blue{ background-image:linear-gradient(to right, #f3007a, #1d16d9); color:rgba(0, 0, 0, 0); -webkit-background-clip:text; background-clip:text; position:relative; }
+.at-item:hover {
  /* width: 100px;
   height: 100px;
-  background-color:#ffe672;*/
+  background-color:#ffe672;
   animation-name: shake-center;
   animation-duration: 1s;
   animation-timing-function: ease;
   animation-delay: 0s;
   animation-iteration-count: 1;
   animation-direction: normal;
-  animation-fill-mode: none;
+  animation-fill-mode: none;*/
+  border:2px dashed rgb(209, 198, 44);
+  box-shadow: 0px 0px 20px 2px rgb(209, 198, 44);
+ 
 }
 @keyframes shake-center {
   0%{
@@ -87,8 +91,10 @@ div.at-container {
     /* transform: rotate(-26deg); */
     font-family: product-text-font;
     font-size: 40px;
-    color: rgb(240, 45, 142);
-    text-shadow: 2px 1px 2px #101010;
+	text-align: center;
+    /*color: rgb(240, 45, 142);*/
+    text-shadow: 3px 6px 4px #848080;
+	transform: scale3d(1.5, 1.5, 1.5);
 }
 
 /* filter page */
@@ -127,7 +133,7 @@ div.at-container {
 
 .brand-catalog {
     top: 68px!important;
-    background-color: #fbf9f900!important;
+    background-color:none;
 }
 
 

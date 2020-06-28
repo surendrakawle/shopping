@@ -26,15 +26,18 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
     Route::resource('/users','UserController',['except'=>['show','create','store']]);
 });
 Route::match(['get','post'],'/formDefination','FormDefinationController@index')->name('formDefination')->middleware('can:manage-users');
+
 /* CATALOGUE ROUTE */
 Route::resource('catalogue', 'CatelogController');
 Route::match(['get', 'post'], 'get-catalogues','CatelogController@getCatalogue')->name('get-catalogues');
 Route::resource('home', 'HomeController');
+
 /* CATEGORY ROUTE */
 Route::resource('category', 'CategoryController');
 Route::match(['get', 'post'], 'get-category','CategoryController@getCategory')->name('get-category');
 Route::match(['get', 'post'], 'category-image','CategoryController@getImage')->name('category-image');
 Route::match(['get', 'post'], 'categoryUpdate','CategoryController@update')->name('categoryUpdate');
+
 /* PRODUCT ROUTE */
 Route::resource('product', 'ProductController');
 Route::match(['get', 'post'], 'get-product','ProductController@getProduct')->name('get-product');
@@ -44,9 +47,7 @@ Route::resource('contact', 'ContactController');
 Route::get('/productdesc', function () {
     return view('product_desc');
 })->name('productdesc');
-Route::get('/order', function () {
-    return view('order');
-})->name('order');
+
 Route::get('/wishlist', function () {return view('wishlist');})->name('wishlist');
 Route::get('/faq',function (){ return view('faq'); })->name('faq');
 
@@ -73,3 +74,9 @@ Route::resource('Uphaaar_Gift_gallary','GalleryController');
 
 /// Description
 Route::match(['post','get'],'Uphaaar_product_description/{id}','ProductController@description');
+
+///Cart 
+Route::resource('cart','CartController');
+
+//Order
+Route::resource('order','OrderController');

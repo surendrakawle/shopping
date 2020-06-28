@@ -277,7 +277,7 @@
                                     <input id="home_page_1" name="home_page" type="checkbox">
                                     <label for="acceptTerms-2">Show in home page.</label>
                                 </fieldset>
-                                <button type="submit" class="btn btn-danger m-t-15 waves-effect" id="SubmitCreateProductForm" style="display:none">Add</button>
+                                <button type="submit" class="btn btn-danger m-t-15 waves-effect" id="SubmitCreateProductForm_1" style="display:none">Add</button>
                             </form>
                
             </div>
@@ -453,21 +453,22 @@ var save_url="{{ route('product.store') }}";
             });
         });
 
-       function Catalog(){
+       function category(){
             $.ajax({
-                url: "{{ route('get-catalogues') }}",
+                url: "{{ route('get-category') }}",
                 method: 'GET',
                 success: function(result) {
                     // console.log(result);
                     result.data.forEach(element => {
                         // console.log(element);
-                        $('#catelogue_id').append('<option value="'+element.id+'">'+element.catelogue_name+'</option>');
+                        $('#categories_name').append('<option value="'+element.id+'">'+element.categories_name+'</option>');
+                        $('#categories_name_1').append('<option value="'+element.id+'">'+element.categories_name+'</option>');
                     });
 
                 }
             });
        }
-       Catalog();
+       category();
     });
 </script>
 @endsection

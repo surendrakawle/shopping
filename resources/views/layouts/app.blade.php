@@ -49,18 +49,12 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+		.breadcrumb>li+li:before{
+			display:none;
+		}
     </style>
     @yield('style');
-    @if($category ?? "")
-    <style>
-    body{
-        background-image: url("{{asset('frontEnd/images/image-gallery/uphar.jpg')}}");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    </style>
-     @endif
+   
 </head>
 
 <body class="theme-red ">
@@ -96,22 +90,23 @@
     </div>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
-    <nav class="navbar">
+    <nav class="navbar" style="min-height: 125px;">
         <div class="container-fluid">
 
             <div class="navbar-header">
-                <a href="javascript:void(0);" class="bars"></a>
-                <center>
+                <!---<a href="javascript:void(0);"  class="bars"></a> ---->
+                
                 <a class="navbar-brand brand-name"   href="{{route('/')}}">
                 <!-- {{ config('app.name', 'Shoping Add') }} -->
-                <img src="{{asset('Uphaaar.png')}}"  alt="logo"  style="margin-top:-15px;height:45px;">
-            </a>
-            </center>
+                <img src="{{asset('Uphaaar.png')}}"  alt="logo"  style="margin-top:-15px;width:6%;">
+				</a>
+            
 
             <ul class="nav navbar-nav navbar-right">
-                    <!-- Call Search -->
+                    <!-- Call Search
                     <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
-                    <li><a href="{{ route('wishlist')}}"  ><i class="material-icons">favorite</i></a></li>
+                     -->
+					 <li><a href="{{ route('wishlist')}}"  ><i class="material-icons">favorite</i></a></li>
                     <!-- #END# Call Search -->
 
 
@@ -219,7 +214,7 @@
                                 </ul>
                             </li>
                             <li class="footer">
-                                <a href="{{ route('order') }}" class="btn btn-primary waves-effect">Checkout</a>
+                                <a href="{{ route('order.index') }}" class="btn btn-primary waves-effect">Checkout</a>
                             </li>
                         </ul>
                     </li>
@@ -234,19 +229,20 @@
     </nav>
 
     @if($category ?? "")
-    <nav class="navbar brand-catalog">
+    <nav class="navbar brand-catalog"style="background-color:none!important;min-height: 55px;">
         <div class="container-fluid">
-            <div class=" table-responsive" style="border: none!important;">
-                <center>
-            <ol class="breadcrumb   m-t-0" style="font-size:14px;width:1200px;overflow:hidden;">
+            <div class=" table-responsive" style="border: none!important;color:white;">
+			 <a href="javascript:void(0);"  class="bars"></a>
+               
+            <ol class="breadcrumb   m-t-0 pull-right" style="font-size:14px;width:1200px;overflow:hidden;margin-top:3px;">
                 <li>
-                    <a href="/">
+                    <a href="/" style="color:white!important;">
                         <i class="material-icons">home</i>
                     </a>
                 </li>
                 @foreach($category_1 as $key=>$value)
                 <li onclick="listShow(this)" tar-data="collapsenav{{$key}}">
-                    <a href="#collapsenav{{$key}}" class="font-bold" role="button" data-toggle="collapse"  aria-expanded="false"
+                    <a href="#collapsenav{{$key}}" style="color:white!important;" class="font-bold" role="button" data-toggle="collapse"  aria-expanded="false"
                     aria-controls="collapseExample">
                         {{ $value->catelogue_name }}
                     </a>
@@ -254,7 +250,8 @@
                 </li>
                 @endforeach
             </ol>
-                </center>
+			
+                
             </div>
 
         </div>
@@ -269,10 +266,9 @@
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 at-item ">
                             <a href="{{url('product_filter/12')}}" class="thumbnail" style="border:none!important;">
                                 <img src="{{asset('storage/category/'.$value_1->image)}}" style="height:80px;width:100%;" >
-                                <div class="T-Shirttion" style="padding:5px;">
+                                <div class="T-Shirttion" style="padding-top:5px;">
                                  {{ $value_1->categories_name }}
                                 </div>
-
                             </a>
                         </div>
                         @endif
@@ -325,7 +321,7 @@
                                         @endif
                                     @endauth
                             @endif
-                            <li><a href="{{ route('order') }}"><i class="material-icons">shopping_cart</i>Cart</a></li>
+                            <li><a href="{{ route('order.index') }}"><i class="material-icons">shopping_cart</i>Cart</a></li>
                             <li><a href="{{ route('wishlist') }}"><i class="material-icons">favorite</i>Wishlist</a></li>
                             <li role="separator" class="divider"></li>
                             @can('all-users')
@@ -667,7 +663,7 @@
                                     @if($key==0)
                                     active
                                     @endif ">
-                                        <img src="{{asset('storage/slider/'.$value->image)}}"  class="slider_img" alt="uphaaar_offer_slider" />
+                                        <img src="{{asset('storage/slider/'.$value->image)}}"  class="slider_img" style="width:100%!important" alt="uphaaar_offer_slider" />
 
                                     </div>
                                 @endforeach 

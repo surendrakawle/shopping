@@ -155,6 +155,7 @@ xtab-filter
   background-color: #ffffff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
   z-index: 1;
+  display:none;
 }
 .cd-tab-filter-wrapper:after {
   content: "";
@@ -731,7 +732,7 @@ xcustom form elements
 				<span class="material-icons" style="color:#ffdf43;">star</span>
 				<span class="material-icons" style="color:#ffdf43;">star</span>
 				<span class="material-icons" style="color:#ffdf43;">star_half</span> 
-				<a href="{{ route('order') }}" class="btn btn-sm btn-primary pull-right"><i class="material-icons">shopping_cart</i></a>
+				<a href="{{ route('order.index') }}" class="btn btn-sm btn-primary pull-right"><i class="material-icons">shopping_cart</i></a>
 				
 				</div>
 				</li>
@@ -740,8 +741,10 @@ xcustom form elements
 				<li class="gap"></li>
 				<li class="gap"></li>
 			</ul>
-      <button class="uk-button uk-button-large uk-button-outline ladda-button uk-width-1-1"><i class="uk-icon uk-icon-plus"></i> SHOW MORE</button>
-			<div class="cd-fail-message">No results found</div>
+      <button class="uk-button uk-button-large uk-button-outline ladda-button uk-width-1-1" style="display:none"><i class="uk-icon uk-icon-plus"></i> SHOW MORE</button>
+			<center>
+			<div class="cd-fail-message btn btn-md btn-danger" style="display:inline!important;font-family:bold;font-size:20px">PRODUCTS NOT AVAILABLE</div>
+			</center>
 		</section> <!-- cd-gallery -->
 
 		<div class="cd-filter">

@@ -22,7 +22,7 @@
                                     <div class="thumbnail" style="padding:10px!important">
                                         <img src="{{asset('storage/category/'.$value->image)}}" class="img-size">
                                         <div class="T-Shirttion product-text">
-                                            {{ $value->categories_name }}
+                                           <span class="txt--gradient-blue"> {{ $value->categories_name }} </span>
                                         </div>
                                         <div class="spacer">
         

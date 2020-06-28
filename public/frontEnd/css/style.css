@@ -10,14 +10,14 @@
     }
 }
 
-.prod {
+/* .prod {
     transform: skew(-4deg)!important;
     transition: transform 1s;
 }
 
 .prod:hover {
     transform: rotate(2deg)!important;
-}
+}*/
 
 @media only screen and (max-width: 900px) {
     .img_response {
@@ -3069,9 +3069,17 @@
 
 /* Media ======================================= */
 
-@media (min-width: 767px) {
+@media (max-width: 1000px) {
     .navbar .navbar-header {
         width: 90%;
+    }
+    .navbar .navbar-header .navbar-brand {
+        width: 100%;
+    }
+}
+@media (min-width: 1000px) {
+    .navbar .navbar-header {
+        width: 98%!important;
     }
     .navbar .navbar-header .navbar-brand {
         width: 100%;
@@ -3179,7 +3187,7 @@ a {
 }
 
 section.content {
-    margin: 100px 15px 0 315px;
+    margin: 116px 15px 0 315px;
     -moz-transition: 0.5s;
     -o-transition: 0.5s;
     -webkit-transition: 0.5s;
@@ -9360,7 +9368,9 @@ fieldset[disabled] .form-control {
     font-family: 'Material Icons';
     font-size: 24px;
     position: absolute;
-    top: 18px;
+    top: 06px!important;
+    /*z-index:100;*/
+	top: 80px;
     left: 20px;
     margin-right: 10px;
     -moz-transform: scale(0);
@@ -10588,7 +10598,8 @@ fieldset[disabled] .form-control {
     height: calc(100vh - 70px);
     position: fixed;
     right: -300px;
-    top: 70px;
+    /*top: 70px;*/
+	top:127px;
     background: #fdfdfd;
     z-index: 11 !important;
     -webkit-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);

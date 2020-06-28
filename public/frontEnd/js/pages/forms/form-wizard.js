@@ -128,7 +128,7 @@ $(function () {
         }
     });
 	
-	    //Advanced form with validation
+	/*    //Advanced form with validation
     var form = $('#wizard_with_validation_1').show();
     form.steps({
         headerTag: 'h3',
@@ -228,7 +228,7 @@ $(function () {
                 equalTo: '#password'
             }
         }
-    });
+    }); */
 });
 
 function setButtonWavesEffect(event) {
