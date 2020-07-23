@@ -104,6 +104,11 @@ class CategoryController extends Controller
     {
         $data = $this->Category->findData($id);
         $catalogue = Catelog::get();
+		if($data->in_home=="on"){
+			$is_Selected="checked";
+		}else{
+			$is_Selected="";
+		}
         $html = '<div class="form-group error"></div>
                 <label for="categories_name">Name</label>
                 <div class="form-group">
@@ -144,6 +149,10 @@ class CategoryController extends Controller
                         <input type="text" id="editDescription" name="Description" value="'.$data->description.'" class="form-control" placeholder="Enter your description">
                     </div>
                 </div>
+				 <label for="description">Show In Home</label>
+                     <div class="form-group">
+						<input type="checkbox" id="in_home" name="in_home"  class="form-control" '.$is_Selected.'>
+					</div>
                 <br>
                ';
         return response()->json(['html'=>$html]);
@@ -174,7 +183,7 @@ class CategoryController extends Controller
             $category->image=$fileName;
             $category->save();  
         }
-        $category=$this->Category->updateData($request->id, $request->only('categories_name','catelogue_id','Description'));
+        $category=$this->Category->updateData($request->id, $request->only('categories_name','catelogue_id','Description','in_home'));
         
 
         return response()->json(['success'=>'Category updated successfully']);

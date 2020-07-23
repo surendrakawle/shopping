@@ -92,6 +92,10 @@
                                         <input type="text" id="description" name="description" class="form-control" placeholder="Enter your description">
                                     </div>
                                 </div>
+								 <label for="description">Show In Home</label>
+                                <div class="form-group">
+									<input type="checkbox" id="in_home" name="in_home" class="form-control" placeholder="">
+                                </div>
                                 <br>
                                 <button type="submit" class="btn btn-success m-t-15 waves-effect" >Add</button>
                                 <button type="button" class="btn btn-danger m-t-15 waves-effect" data-dismiss="modal">Close</button>

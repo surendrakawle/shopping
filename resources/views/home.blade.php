@@ -17,6 +17,7 @@
                             <div class="row">
                                 @if($category??"")
                                 @foreach ($category as $key=>$value)
+								@if($value->in_home=="on")
                                 <a href="{{url('product_filter/'.$value->id)}}">
                                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 prod">
                                     <div class="thumbnail" style="padding:10px!important">
@@ -31,6 +32,7 @@
                                     </div>
                                 </div>
                                 </a>
+								@endif
                                 @endforeach
                                 @endif
 

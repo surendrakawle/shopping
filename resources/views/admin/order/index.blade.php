@@ -196,14 +196,14 @@ input[type="text"] {
                                             <div class="quantity-wrapper">
                                                 <div>
                                                     <label for="quantity" style="margin-right: 0.5rem;">Quantity:</label>
-                                                    <select name="quantity" style="margin-bottom: 1rem;">
-                                                        <option value disabled>Please select</option>
-                                                        <option value="1" selected>1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
+                                                    <select name="quantity" class="update-cart" style="margin-bottom: 1rem;" data-id="{{ $value['id'] }}" >
+                                                        <option value disabled <?php if($value['quantity']==''){echo 'selected';}  ?>>Please select</option>
+                                                        <option value="1" <?php if($value['quantity']=='1'){echo 'selected';}  ?> >1</option>
+                                                        <option value="2" <?php if($value['quantity']=='2'){echo 'selected';}  ?>>2</option>
+                                                        <option value="3" <?php if($value['quantity']=='3'){echo 'selected';}  ?>>3</option>
                                                     </select>
                                                 </div>
-                                                <button class="btn-remove">Remove</button>
+                                                <button  class="remove-from-cart" data-id="{{ $value['id'] }}" class="btn-remove">Remove</button>
                                             </div>
                                         </div>
                                     </div>
@@ -246,4 +246,45 @@ input[type="text"] {
             </div>
         </div>
 
+@endsection
+
+@section('script')
+ 
+ 
+    <script type="text/javascript">
+	
+        $(".update-cart").change(function (e) {
+           e.preventDefault();
+ 
+           var ele = $(this);
+ 
+            $.ajax({
+               url: '{{ url('cart') }}/'+ele.attr("data-id"),
+               method: "patch",
+               data: {_token: '{{ csrf_token() }}', quantity: ele.val()},
+               success: function (response) {
+                   window.location.reload();
+               }
+            });
+        });
+ 
+        $(".remove-from-cart").click(function (e) {
+            e.preventDefault();
+ 
+            var ele = $(this);
+ 
+            if(confirm("Are you sure")) {
+                $.ajax({
+                    url: '{{ url('cart') }}/'+ele.attr("data-id"),
+                    method: "DELETE",
+                    data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
+                    success: function (response) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+ 
+    </script>
+ 
 @endsection

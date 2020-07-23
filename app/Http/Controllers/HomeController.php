@@ -30,6 +30,7 @@ class HomeController extends Controller
         $product=Products::all();
         $category=Category::all();
         $category_1=Catelog::all();
+		//dd($category);
         $slider=Slider::all();
         return view('home')->with([
             'product'=>$product,

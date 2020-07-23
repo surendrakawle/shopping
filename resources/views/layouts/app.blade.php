@@ -94,7 +94,9 @@
         <div class="container-fluid">
 
             <div class="navbar-header">
-                <!---<a href="javascript:void(0);"  class="bars"></a> ---->
+                <!---
+				---->
+				<a href="javascript:void(0);"  class="bars"></a> 
                 
                 <a class="navbar-brand brand-name"   href="{{route('/')}}">
                 <!-- {{ config('app.name', 'Shoping Add') }} -->
@@ -263,6 +265,7 @@
                         @if($category??"")
                         @foreach ($category as $key_1=>$value_1)
                         @if($value_1->catelogue_id==$value->id)
+						@if($value_1->in_home=="off")
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 at-item ">
                             <a href="{{url('product_filter/12')}}" class="thumbnail" style="border:none!important;">
                                 <img src="{{asset('storage/category/'.$value_1->image)}}" style="height:80px;width:100%;" >
@@ -271,6 +274,7 @@
                                 </div>
                             </a>
                         </div>
+                        @endif
                         @endif
                         @endforeach
                         @endif
@@ -309,7 +313,7 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="{{route('profile')}}"><i class="material-icons">person</i>Profile</a></li>
+                            <li><a href="/profile"><i class="material-icons">person</i>Profile</a></li>
                             <li role="separator" class="divider"></li>
                              @if (Route::has('login'))
                                  @auth
@@ -448,7 +452,7 @@
                         </a>
                     </li> --}}
                     <li class="">
-                        <a href="{{ route('profile') }}">
+                        <a href="/profile">
                              <i class="material-icons">person</i>
                              <span>Account</span>
                         </a>

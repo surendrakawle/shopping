@@ -64,17 +64,30 @@ class CartController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
-		if(isset(auth()->user()->id)){
-			dd($request);
-		}else{
 			$product=Products::select('name','price','images','description')->find($request->product_id);
-			 $cart = session()->get('cart');
+		if(isset(auth()->user()->id)){
+			$cart=$this->Cart->where(['product_id'=>$request->product_id,'created_by'=>auth()->user()->id])->get()->first();
+			
+		if(isset($cart->id)){
+			// if product available in card 
+			$request->request->add(['price' => ($cart->price+$product->price),'qty' => ($cart->qty+$request->qty),'updated_by'=>auth()->user()->id]);
+		    $Cart=$this->Cart->updateData($cart->id,$request->only('product_id','qty','price','updated_by'));
+			}else{
+			// if product not in cart 
+			$request->request->add(['price' => $product->price,'created_by'=>auth()->user()->id,'discount'=>$product->discount]);
+		    $Cart=$this->Cart->storeData($request->only('product_id','qty','price','created_by','discount'));	
+			}
+			}else{
+			
+			$cart = session()->get('cart');
 			$id=$request->product_id;
+			
 			// if cart is empty then this the first product
 			if(!$cart) {
 			
 				$cart = [
 						$id => [
+							"id" => $id,
 							"name" => $product->name,
 							"quantity" => 1,
 							"price" => $product->price,
@@ -101,6 +114,7 @@ class CartController extends Controller
 		
 			// if item not exist in cart then add to cart with quantity = 1
 			$cart[$id] = [
+				"id" => $id,
 				"name" => $product->name,
 				"quantity" => 1,
 				"price" => $product->price,
@@ -110,8 +124,9 @@ class CartController extends Controller
  
         session()->put('cart', $cart);
  
-       return redirect('order');
+       
 		}
+		return redirect('order');
         /*if ($files = $request->file('image')) {
             
             $fileName =  "uphaaar_gifts-".time().'.'.$request->image->getClientOriginalExtension();
@@ -197,8 +212,18 @@ class CartController extends Controller
      * @param  \App\Cart  $Cart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
+		if($id and $request->quantity)
+        {
+            $cart = session()->get('cart');
+ 
+            $cart[$id]["quantity"] = $request->quantity;
+ 
+            session()->put('cart', $cart);
+ 
+            session()->flash('success', 'Cart updated successfully');
+        }
        $validator = \Validator::make($request->all(), [
             'product_id' => 'required',
             'qty' => 'required',
@@ -229,7 +254,32 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        $this->Cart->deleteData($id);
-        return response()->json(['success'=>'Cart deleted successfully']);
+		if($id) {
+ 
+            $cart = session()->get('cart');
+ 
+            if(isset($cart[$id])) {
+ 
+                unset($cart[$id]);
+ 
+                session()->put('cart', $cart);
+            }
+ 
+            session()->flash('success', 'Product removed successfully');
+        }
+        //$this->Cart->deleteData($id);
+        //return response()->json(['success'=>'Cart deleted successfully']);
     }
+	public function afterLogin()
+	{
+		if(isset($cart->id)){
+			// if product available in card 
+			$request->request->add(['price' => $product->price,'created_by'=>auth()->user()->id,'discount'=>$product->discount]);
+		    $Cart=$this->Cart->updateData($cart->id,$request->only('product_id','qty','price','created_by','discount'));
+			} else{
+			// if product not in cart 
+			$request->request->add(['price' => $product->price,'created_by'=>auth()->user()->id,'discount'=>$product->discount]);
+		    $Cart=$this->Cart->storeData($request->only('product_id','qty','price','created_by','discount'));	
+			}
+	}
 }

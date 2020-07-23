@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/profile', function () {
-    return view('welcome');
-})->name('profile');
+
 Route::get('/', 'HomeController@index')->name('/');
 Route::match(['get', 'post'], '/product_filter/{id}','ProductFilterController@index');
 Auth::routes();
@@ -80,3 +78,6 @@ Route::resource('cart','CartController');
 
 //Order
 Route::resource('order','OrderController');
+
+//Order
+Route::resource('profile','ProfileController');
